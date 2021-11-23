@@ -1,0 +1,350 @@
+@import "../../scss/variables";
+
+.home {
+   display: flex;
+   padding: 0 1.5rem;
+   min-height: 100vh;
+   max-width: 1320px;
+   margin: 0 auto;
+   &__header {
+      padding-top: 1rem;
+      .home-twitter-h {
+         color: $primary;
+         font-size: 3rem;
+         margin-bottom: 2.2rem;
+      }
+   }
+   &__logo-h {
+   }
+
+   &__main {
+      flex: 1 1 auto;
+      display: flex;
+      gap: 4rem;
+   }
+
+   &__content {
+      max-width: 700px;
+      flex: 1 1 auto;
+   }
+
+   &__aside {
+      max-width: 300px;
+      display: flex;
+      flex-direction: column;
+   }
+}
+
+//NAVIGATION
+
+.home-nav {
+   position: relative;
+   .nav-fake {
+      width: 230px;
+   }
+   &__list {
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+   }
+   &__item {
+      cursor: pointer;
+      border-radius: 50px;
+
+      & a {
+         color: $secondary;
+         display: flex;
+         align-items: center;
+         gap: 1.4rem;
+         padding: 1rem;
+
+         &.active {
+            color: $primary;
+            & .home-nav-icon {
+               color: $primary;
+            }
+         }
+      }
+      & div {
+         font-size: 1.6rem;
+         letter-spacing: 0.1rem;
+      }
+
+      &:hover {
+         background-color: $secondary_light;
+      }
+
+      &:first-child {
+         padding: 0 0 0 1rem;
+         pointer-events: none;
+      }
+   }
+
+   .home-nav-icon {
+      color: $secondary;
+      height: 27px;
+      width: 27px;
+   }
+
+   &__btn {
+      cursor: pointer;
+      margin-top: 1.5rem;
+      background-color: $primary;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 35px;
+      box-shadow: 0px 5px 15px rgba(66, 66, 66, 0.12);
+
+      .home-new-tweet {
+         display: none;
+      }
+
+      & span {
+         color: #fff;
+         font-size: 1.8rem;
+         font-weight: bold;
+         text-align: center;
+         letter-spacing: 0.02em;
+         padding: 1.2rem 0.5rem;
+      }
+
+      &:hover {
+         background-color: $primary_dark;
+      }
+   }
+}
+
+//CONTENT
+
+.h-content {
+   border: 1px solid $secondary_light;
+   border-bottom: 0;
+   border-top: 0;
+   &__header {
+      font-size: 1.6rem;
+      padding: 1.1rem 1.5rem;
+      font-weight: bold;
+      border-bottom: 1px solid $secondary_light;
+   }
+   &__title {
+   }
+
+   &__tweets-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+   }
+}
+
+//Aside
+
+.home-aside {
+   background-color: #fff;
+   width: 100%;
+
+   //SEARCH INPUT
+
+   &__search {
+      padding: 0.4rem 0;
+      background-color: #fff;
+   }
+   &__label {
+      color: $grey;
+      padding: 1.2rem 1.8rem;
+      border-radius: 35px;
+      background-color: rgb(240, 240, 240);
+      border: 1px solid rgb(240, 240, 240);
+      display: flex;
+
+      &:focus-within {
+         background-color: #fff;
+         border: 1px solid $primary;
+
+         & .home-aside-i {
+            color: $primary;
+         }
+
+         & input {
+            background-color: #fff;
+         }
+      }
+
+      .home-aside-i {
+         font-size: 2rem;
+         margin-right: 1.8rem;
+      }
+   }
+   &__input {
+      background-color: rgb(240, 240, 240);
+      font-family: inherit;
+      font-size: 1.5rem;
+      color: $secondary;
+
+      &::placeholder {
+         font-weight: 300;
+      }
+   }
+
+   //TRENDS-COLUMNS
+
+   .home-column {
+      position: relative;
+      max-width: 100%;
+      margin-top: 80px;
+      border-radius: 20px;
+      overflow: hidden;
+      background-color: $grey_light;
+      color: $secondary;
+
+      &.users-col {
+         margin-top: 2rem;
+      }
+
+      &__head {
+         font-weight: bold;
+         font-size: 2rem;
+         padding: 1.5rem;
+      }
+      &__list {
+      }
+      &__item {
+         position: relative;
+         max-width: 100%;
+         display: flex;
+         align-items: center;
+         cursor: pointer;
+         padding: 1.2rem 1.5rem;
+         &:hover {
+            background-color: $grey_hover;
+         }
+      }
+      &__topic {
+      }
+      &__title {
+         font-weight: 500;
+         font-size: 1.8rem;
+         margin-bottom: 1rem;
+         overflow: hidden;
+
+         &.user-name {
+            flex: 1 1 auto;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+
+            span {
+               display: block;
+               overflow: hidden;
+               font-size: 1.6rem;
+               text-overflow: ellipsis;
+               white-space: nowrap;
+               &:hover {
+                  text-decoration: underline;
+               }
+            }
+         }
+      }
+
+      &__avatar {
+         flex: 0 0 48px;
+         margin-right: 1.2rem;
+         & img {
+            max-width: 100%;
+            display: block;
+            border-radius: 50%;
+         }
+      }
+      &__body {
+         align-items: center;
+         display: flex;
+         flex: 1 1 auto;
+         max-width: 300px;
+         justify-content: space-between;
+         overflow: hidden;
+      }
+      &__link {
+         color: $grey;
+         font-size: 1.3rem;
+      }
+      &__button {
+         background-color: $btn_black;
+         color: #fff;
+         font-size: 1.6rem;
+         font-weight: bold;
+         border-radius: 305px;
+         min-height: 32px;
+         padding: 0 1.6rem;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         margin-left: 1rem;
+
+         &:hover {
+            background-color: $btn_black_hover;
+         }
+      }
+
+      &__count {
+         color: $grey;
+         font-size: 1.3rem;
+      }
+   }
+}
+
+@media (max-width: 1240px) {
+   .home-nav {
+      padding-right: 1.8rem;
+      .nav-fake {
+         width: 40px;
+      }
+
+      &__item {
+         width: 50px;
+         height: 50px;
+         border-radius: 50%;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+
+         & a {
+            padding: 0;
+         }
+
+         & div {
+            display: none;
+         }
+      }
+
+      &__btn {
+         border-radius: 50%;
+         box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+         .home-new-tweet {
+            display: block;
+            background-color: $primary;
+            color: #fff;
+            border-radius: 50%;
+            padding: 1rem;
+            font-size: 5rem;
+
+            &:hover {
+               background-color: $primary_dark;
+            }
+         }
+
+         & span {
+            display: none;
+         }
+      }
+   }
+}
+
+@media (max-width: 999px) {
+   .home {
+      &__aside {
+         display: none;
+      }
+   }
+}

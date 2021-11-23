@@ -1,0 +1,122 @@
+{
+   "tweets": [
+      {
+         "_id": "619ce6e5f4079d20d2ec4a69",
+         "text": "Ut Lorem do mollit eiusmod occaecat. Est quis anim labore occaecat ut nostrud Lorem tempor.",
+         "user": {
+            "fullName": "Howard Armstrong",
+            "username": "Marisa",
+            "avatar_url": "https://source.unsplash.com/random/100x100?2"
+         }
+      },
+      {
+         "_id": "619ce6e53e0f5d429cf4df93",
+         "text": "Magna proident non minim amet tempor exercitation ipsum amet. Occaecat culpa esse in sint in culpa.",
+         "user": {
+            "fullName": "Mcbride Marsh",
+            "username": "Ines",
+            "avatar_url": "https://source.unsplash.com/random/100x100?4"
+         }
+      },
+      {
+         "_id": "619ce6e54c0849134ea0adaf",
+         "text": "Ea ullamco eiusmod sint minim esse proident aliquip elit sunt eu voluptate excepteur dolore. Est adipisicing aute ipsum cillum veniam esse ut adipisicing anim cillum culpa aliquip anim reprehenderit.",
+         "user": {
+            "fullName": "Mavis Golden",
+            "username": "Schwartz",
+            "avatar_url": "https://source.unsplash.com/random/100x100?3"
+         }
+      },
+      {
+         "_id": "619ce6e5192b021f12e8d3dc",
+         "text": "Consectetur laboris cillum aute officia. Aliquip elit incididunt exercitation amet esse sint adipisicing excepteur voluptate fugiat.",
+         "user": {
+            "fullName": "Colleen Everett",
+            "username": "Clarissa",
+            "avatar_url": "https://source.unsplash.com/random/100x100?4"
+         }
+      },
+      {
+         "_id": "619ce6e5b9d2c4a83bdf44c2",
+         "text": "Cupidatat nostrud qui laboris quis reprehenderit consequat do incididunt elit nostrud anim eiusmod labore. Commodo enim aute pariatur duis deserunt pariatur.",
+         "user": {
+            "fullName": "Stuart Nunez",
+            "username": "Kimberly",
+            "avatar_url": "https://source.unsplash.com/random/100x100?3"
+         }
+      },
+      {
+         "_id": "619ce6e56dda170012ffb751",
+         "text": "Culpa occaecat cupidatat quis adipisicing et magna mollit tempor deserunt labore aliqua aliquip adipisicing. Sint fugiat id consectetur ex sint in ipsum cillum voluptate.",
+         "user": {
+            "fullName": "Shanna Faulkner",
+            "username": "Earline",
+            "avatar_url": "https://source.unsplash.com/random/100x100?4"
+         }
+      },
+      {
+         "_id": "619ce6e5ca5c9df39e8554b8",
+         "text": "Ut enim enim reprehenderit quis Lorem reprehenderit. Do sint sunt tempor cillum voluptate proident cillum occaecat cillum dolore elit enim sint.",
+         "user": {
+            "fullName": "Sampson Ochoa",
+            "username": "Lorie",
+            "avatar_url": "https://source.unsplash.com/random/100x100?1"
+         }
+      },
+      {
+         "_id": "619ce6e574cd035f36bf72b3",
+         "text": "Eu excepteur esse laborum quis laboris velit consequat dolor anim sit cupidatat. Duis veniam ullamco cillum voluptate non.",
+         "user": {
+            "fullName": "Byers Neal",
+            "username": "Priscilla",
+            "avatar_url": "https://source.unsplash.com/random/100x100?4"
+         }
+      },
+      {
+         "_id": "619ce6e53f54379d123433c5",
+         "text": "Sit aliqua eu aute aliqua velit velit qui sit qui cillum commodo. Irure eiusmod ipsum cillum mollit.",
+         "user": {
+            "fullName": "Estes Jensen",
+            "username": "Mercado",
+            "avatar_url": "https://source.unsplash.com/random/100x100?3"
+         }
+      },
+      {
+         "_id": "619ce6e5bb1d696d7c59e706",
+         "text": "Nostrud sit esse aute voluptate laboris eiusmod enim esse enim tempor deserunt esse duis officia. Laborum excepteur non tempor deserunt adipisicing laborum et nulla proident officia aliqua nostrud.",
+         "user": {
+            "fullName": "Katrina Nash",
+            "username": "Delaney",
+            "avatar_url": "https://source.unsplash.com/random/100x100?5"
+         }
+      }
+   ],
+   "users": [
+      {
+         "fullName": "Katrina Nash",
+         "username": "Delaney",
+         "avatar_url": "https://source.unsplash.com/random/100x100?5"
+      },
+      {
+         "fullName": "Estes Jensen",
+         "username": "Mercado",
+         "avatar_url": "https://source.unsplash.com/random/100x100?3"
+      },
+      {
+         "fullName": "Byers Neal",
+         "username": "Priscilla",
+         "avatar_url": "https://source.unsplash.com/random/100x100?4"
+      },
+      {
+         "fullName": "Sampson Ochoa",
+         "username": "Lorie",
+         "avatar_url": "https://source.unsplash.com/random/100x100?1"
+      }
+   ],
+   "user": {
+      "_id": "619ce6e5f4079d20d2ec4a61",
+      "fullName": "Jake Yipson",
+      "username": "JakeYip777",
+      "avatar_url": "https://source.unsplash.com/random/100x100?77"
+   }
+}
