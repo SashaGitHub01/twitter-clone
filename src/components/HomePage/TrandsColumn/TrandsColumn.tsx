@@ -6,6 +6,7 @@ import Loader from "../../Loader/Loader";
 import './TrandsColumn.scss';
 import TrandsItem from "./TrandsItem/TrandsItem";
 
+
 const TrandsColumn: React.FC = () => {
    const dispatch = useDispatch();
 
