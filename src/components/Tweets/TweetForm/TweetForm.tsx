@@ -1,5 +1,4 @@
 import React from "react";
-import avatar from '../../../assets/ava.jpg';
 import './TweetForm.scss';
 import { AiOutlineFileGif as Gif } from 'react-icons/ai';
 import { BsCardImage as Image, BsEmojiSmile as Smile } from 'react-icons/bs';
@@ -28,7 +27,7 @@ const TweetForm: React.FC = () => {
    return (
       <div className="h-content__create-f create-form">
          <div className="create-form__avatar">
-            <img src={avatar} alt="avatar" />
+            <img src='' alt="avatar" />
          </div>
          <div className="create-form__body">
             <form className="create-form__form new-tweet-form" onSubmit={formik.handleSubmit}>
