@@ -1,5 +1,9 @@
 @import "../../scss/variables";
 
+.loader {
+   align-self: center;
+}
+
 .lds-ring {
    margin-top: 0.7rem;
    display: inline-block;

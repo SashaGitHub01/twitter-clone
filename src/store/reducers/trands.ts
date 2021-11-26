@@ -1,4 +1,4 @@
-import { Actions, IState, ActionTypes } from "../../types/tweets";
+import { Actions, IState, ActionTypes } from "../../types/trands";
 
 const initialState: IState = {
    items: [],
@@ -6,27 +6,13 @@ const initialState: IState = {
    error: null,
 }
 
-const tweetsReducer = (state = initialState, action: ActionTypes) => {
+const trandsReducer = (state = initialState, action: ActionTypes) => {
    switch (action.type) {
       case Actions.SET_ITEMS:
          return {
             ...state,
             isLoading: false,
             items: action.payload,
-         }
-
-      case Actions.ADD_ITEM:
-         let newItems;
-
-         if (!state.items.length) {
-            newItems = [action.payload];
-         } else {
-            newItems = [...state.items, action.payload]
-         }
-
-         return {
-            ...state,
-            items: newItems,
          }
 
       case Actions.SET_IS_LOADING:
@@ -48,4 +34,4 @@ const tweetsReducer = (state = initialState, action: ActionTypes) => {
    }
 }
 
-export default tweetsReducer;
+export default trandsReducer;

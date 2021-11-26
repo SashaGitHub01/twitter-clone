@@ -1,18 +1,18 @@
+import { IUser } from "./userscol";
+
 export enum Actions {
    SET_IS_LOADING = 'tweets/SET_IS_LOADING',
    SET_ITEMS = 'tweets/SET_ITEMS',
    SET_ERROR = 'tweets/SET_ERROR',
-   DELETE_ITEM = 'tweets/DELETE_ITEM'
+   DELETE_ITEM = 'tweets/DELETE_ITEM',
+   ADD_ITEM = 'ADD_ITEM'
 }
 
 export interface ITweet {
    text: string,
    _id: string,
-   user: {
-      fullName: string,
-      username: string,
-      avatar_url: string
-   }
+   created_at: string,
+   user: IUser
 }
 
 export interface IState {
@@ -26,6 +26,11 @@ export interface setItems {
    payload: ITweet[],
 }
 
+export interface addItem {
+   type: Actions.ADD_ITEM,
+   payload: ITweet,
+}
+
 export interface setIsLoading {
    type: Actions.SET_IS_LOADING,
 }
@@ -35,4 +40,7 @@ export interface setError {
    payload: string,
 }
 
-export type ActionTypes = setItems | setIsLoading | setError;
+export type ActionTypes = setItems
+   | setIsLoading
+   | setError
+   | addItem;

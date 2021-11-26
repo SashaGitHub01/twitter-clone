@@ -1,6 +1,4 @@
-import React, { useEffect } from "react"
-import { useDispatch, } from "react-redux";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
+import React from "react"
 import './Home.scss';
 import { GrTwitter as TwitterI } from 'react-icons/gr';
 import {
@@ -12,20 +10,15 @@ import { IoMdNotificationsOutline as NotifI } from 'react-icons/io';
 import { FaRegUser as ProfileI } from 'react-icons/fa';
 import { BsBookmark as BookmarkI, BsSearch as SearchI } from 'react-icons/bs';
 import { GiFeather as Feather } from 'react-icons/gi';
-import TweetForm from "../../components/HomePage/TweetForm/TweetForm";
-import Tweet from "../../components/HomePage/Tweet/Tweet";
-import avatar from '../../assets/avatar1.jpg';
 import { NavLink } from "react-router-dom";
-import Loader from "../../components/Loader/Loader";
-import { getItems } from "../../store/actions/tweetsActions";
+import TrandsColumn from "../../components/HomePage/TrandsColumn/TrandsColumn";
+import UsersColumn from "../../components/HomePage/UsersColumn/UsersColumn";
+import Tweets from "../../components/Tweets/Tweets";
+import { Routes, Route } from "react-router-dom";
+import CurrentTweet from "../../components/CurrentTweet/CurrentTweet";
 
 const Home = () => {
-   const dispatch = useDispatch();
-   const { items, isLoading, error } = useTypedSelector(state => state.tweets);
 
-   useEffect(() => {
-      dispatch(getItems());
-   }, [dispatch])
 
    return (
       <div className="home">
@@ -101,19 +94,10 @@ const Home = () => {
          </header>
          <main className="home__main">
             <div className="home__content h-content">
-               <div className="h-content__header">
-                  <h2 className="h-content__title">
-                     Home
-                  </h2>
-               </div>
-               <TweetForm />
-               <div className="h-content__tweets-list">
-                  {
-                     isLoading
-                        ? <Loader />
-                        : items.map((item) => <Tweet item={item} key={item._id} />)
-                  }
-               </div>
+               <Routes>
+                  <Route path='/home' element={<Tweets />} />
+                  <Route path='/:username/:id' element={<CurrentTweet />} />
+               </Routes>
             </div>
             <div className="home__aside home-aside">
                <div className="home-aside__search">
@@ -131,46 +115,8 @@ const Home = () => {
                      />
                   </label>
                </div>
-               <div className="home-aside__trands home-column">
-                  <div className="home-column__head">
-                     <span>Актуальные темы</span>
-                  </div>
-                  <ul className="home-column__list">
-                     <li className="home-column__item">
-                        <div className="home-column__topic">
-                           <div className="home-column__title">
-                              Topic 1
-                           </div>
-                           <div className="home-column__count">
-                              Твитов: 123
-                           </div>
-                        </div>
-                     </li>
-                  </ul>
-               </div>
-               <div className="home-aside__trands home-column users-col">
-                  <div className="home-column__head">
-                     <span>Кого читать</span>
-                  </div>
-                  <ul className="home-column__list">
-                     <li className="home-column__item">
-                        <div className="home-column__avatar">
-                           <img src={avatar} alt="avatar" />
-                        </div>
-                        <div className="home-column__body">
-                           <div className="home-column__title user-name">
-                              <span>No Namerhhhhhhhhhhhgewwwwwwwwwwwwwwwwwwwwwwwww</span>
-                              <div className="home-column__link">
-                                 @NoName1
-                              </div>
-                           </div>
-                           <div className="home-column__button">
-                              <span>Читать</span>
-                           </div>
-                        </div>
-                     </li>
-                  </ul>
-               </div>
+               <TrandsColumn />
+               <UsersColumn />
             </div>
          </main>
       </div>

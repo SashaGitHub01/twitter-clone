@@ -1,0 +1,89 @@
+@import "../../../../scss/variables";
+.home-column {
+   & .loader {
+      align-self: center;
+   }
+
+   &__list {
+      display: flex;
+      flex-direction: column;
+   }
+
+   &__item {
+      position: relative;
+      max-width: 100%;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      padding: 1.2rem 1.5rem;
+      &:hover {
+         background-color: $grey_hover;
+      }
+   }
+   &__topic {
+   }
+   &__title {
+      font-weight: 500;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      overflow: hidden;
+
+      &.user-name {
+         flex: 1 1 auto;
+         max-width: 100%;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         white-space: nowrap;
+
+         span {
+            display: block;
+            overflow: hidden;
+            font-size: 1.6rem;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            &:hover {
+               text-decoration: underline;
+            }
+         }
+      }
+   }
+
+   &__avatar {
+      flex: 0 0 48px;
+      margin-right: 1.2rem;
+      & img {
+         max-width: 100%;
+         display: block;
+         border-radius: 50%;
+      }
+   }
+   &__body {
+      align-items: center;
+      display: flex;
+      flex: 1 1 auto;
+      max-width: 300px;
+      justify-content: space-between;
+      overflow: hidden;
+   }
+   &__link {
+      color: $grey;
+      font-size: 1.3rem;
+   }
+   &__button {
+      background-color: $btn_black;
+      color: #fff;
+      font-size: 1.6rem;
+      font-weight: bold;
+      border-radius: 305px;
+      min-height: 32px;
+      padding: 0 1.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 1rem;
+
+      &:hover {
+         background-color: $btn_black_hover;
+      }
+   }
+}

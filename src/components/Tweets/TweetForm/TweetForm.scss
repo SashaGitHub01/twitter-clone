@@ -73,11 +73,16 @@
    &__submit {
       color: #fff;
       font-weight: bold;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       background-color: $primary;
       border-radius: 30px;
-      padding: 1rem 1.6rem;
+      padding: 0 1.6rem;
+      min-height: 38px;
       cursor: pointer;
+
+      &:hover {
+         background-color: $primary_dark;
+      }
 
       &:disabled {
          background-color: $primary_disabled;

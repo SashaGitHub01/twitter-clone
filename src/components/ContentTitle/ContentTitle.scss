@@ -1,0 +1,11 @@
+@import "../../scss/variables";
+.h-content {
+   &__header {
+      font-size: 1.6rem;
+      padding: 1.1rem 1.5rem;
+      font-weight: bold;
+      border-bottom: 1px solid $secondary_light;
+   }
+   &__title {
+   }
+}

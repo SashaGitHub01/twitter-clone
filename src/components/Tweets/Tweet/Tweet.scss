@@ -1,10 +1,14 @@
 @import "../../../scss/variables";
 
 .tweet {
+   width: 100%;
+
    &__item {
+      cursor: pointer;
       display: flex;
       position: relative;
       padding: 1.5rem 1.2rem 1.9rem 1.2rem;
+      width: 100%;
 
       &::after {
          content: "";
@@ -14,6 +18,16 @@
          left: 0;
          bottom: 0;
          background-color: $secondary_light;
+      }
+
+      &:hover {
+         background-color: $grey_light;
+      }
+
+      &.disabled {
+         &:hover {
+            background-color: #fff;
+         }
       }
    }
    &__avatar {
@@ -41,8 +55,19 @@
       display: flex;
    }
    &__menu {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: relative;
       z-index: 100;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+
+      &:hover {
+         background-color: $def_bg;
+      }
+
       .dots-icon {
          color: $grey;
          cursor: pointer;

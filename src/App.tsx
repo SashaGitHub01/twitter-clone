@@ -7,9 +7,8 @@ function App() {
    return (
       <div className="wrapper">
          <Routes>
-            <Route path='/login' element={<SignUp />} />
-            <Route path='/home' element={<Home />} />
-            <Route path='/' element={<Navigate to='/home' />} />
+            <Route path='/*' element={<Home />} />
+            <Route path='/' element={<SignUp />} />
          </Routes>
       </div>
    );

@@ -5,7 +5,6 @@ import './TweetPopup.scss';
 
 const TweetPopup: React.FC = () => {
 
-
    return (
       <div className="tweet-popup">
          <ul className="tweet-popup__list">

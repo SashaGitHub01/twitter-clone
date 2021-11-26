@@ -1,0 +1,43 @@
+@import "../../../../scss/variables";
+.home-column {
+   &__item {
+      position: relative;
+      max-width: 100%;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      padding: 1.2rem 1.5rem;
+      &:hover {
+         background-color: $grey_hover;
+      }
+   }
+   &__title {
+      font-weight: 500;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      overflow: hidden;
+
+      &.user-name {
+         flex: 1 1 auto;
+         max-width: 100%;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         white-space: nowrap;
+
+         span {
+            display: block;
+            overflow: hidden;
+            font-size: 1.6rem;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            &:hover {
+               text-decoration: underline;
+            }
+         }
+      }
+   }
+   &__count {
+      color: $grey;
+      font-size: 1.3rem;
+   }
+}

@@ -1,6 +1,7 @@
 $primary: rgb(29, 155, 240);
+$primary_hover: rgba(143, 238, 255, 0.3);
 $primary_dark: rgb(23, 132, 204);
-$primary_disabled: rgba(29, 155, 240, 0.5);
+$primary_disabled: rgba(126, 199, 248, 0.5);
 $secondary: rgb(15, 20, 25);
 $secondary_light: rgba(15, 20, 25, 0.1);
 $grey: rgb(83, 100, 113);
@@ -8,3 +9,9 @@ $grey_light: rgb(247, 249, 249);
 $grey_hover: rgba(0, 0, 0, 0.03);
 $btn_black: rgb(15, 20, 25);
 $btn_black_hover: rgba(15, 20, 25, 0.76);
+$def_bg: rgba(169, 231, 255, 0.2);
+$def_color: rgba(0, 195, 255, 1);
+$rep_bg: rgba(83, 255, 161, 0.15);
+$rep_color: rgba(83, 255, 161, 1);
+$like_bg: rgba(255, 157, 211, 0.15);
+$like_color: rgb(252, 112, 159);
