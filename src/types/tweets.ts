@@ -11,7 +11,7 @@ export enum Actions {
 export interface ITweet {
    text: string,
    _id: string,
-   created_at: string,
+   createdAt: string,
    user: IUser
 }
 

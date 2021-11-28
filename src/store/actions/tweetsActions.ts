@@ -36,23 +36,8 @@ export const getTweets = () => {
 
 export const createNewTweet = (text: string) => {
    return async (dispatch: Dispatch<ActionTypes>) => {
-      const tweet = {
-         id: Math.random().toString(11).substring(2),
-         _id: Math.random().toString(10).substring(1),
-         text: text,
-         created_at: new Date().toString(),
-         user: {
-            fullName: "Howard Armstrong",
-            _id: "77712mgage",
-            username: "Marisa",
-            avatar_url: "https://source.unsplash.com/random/100x100?2"
-         }
-      }
-
-      console.log(tweet)
-
       try {
-         const res = await TweetsService.addNewTweet(tweet);
+         const res = await TweetsService.addNewTweet(text);
          console.log(res)
          dispatch(addItem(res));
       } catch (err) {

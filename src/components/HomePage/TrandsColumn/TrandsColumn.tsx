@@ -13,7 +13,7 @@ const TrandsColumn: React.FC = () => {
    const { items, isLoading, error } = useTypedSelector(state => state.trands)
 
    useEffect(() => {
-      dispatch(getTrands());
+      // dispatch(getTrands());
    }, [dispatch])
 
    return (

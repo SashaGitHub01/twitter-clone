@@ -1,10 +1,16 @@
 import axios from "axios";
+import { IUser } from "../types/userscol";
+
+export interface Response<T> {
+   status?: string,
+   data: T
+}
 
 class UsersService {
-   static fetchColUsers = async () => {
-      const res = await axios.get('/users?_limit=3');
+   static fetchColUsers = async (): Promise<IUser[]> => {
+      const res = await axios.get<Response<IUser[]>>('/users');
 
-      return res.data;
+      return res.data.data;
    }
 }
 

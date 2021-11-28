@@ -4,12 +4,13 @@ import { Link } from "react-router-dom";
 import { ITweet } from "../../../types/tweets";
 import TweetPopup from "../TweetPopup/TweetPopup";
 import { LikeIcon, DotsIcon, ShareIcon, RepostIcon, CommentsIcon } from "../../../assets/icons";
+import { formatDate } from "../../../utils/formatDate";
 
 interface ITweetProps {
    item: ITweet
 }
 
-const Tweet: React.FC<ITweetProps> = ({ item: { _id, user, text, created_at } }) => {
+const Tweet: React.FC<ITweetProps> = ({ item: { _id, user, text, createdAt } }) => {
    const [popup, setPopup] = useState<boolean>(false);
 
    const ref = useRef<HTMLDivElement>(null);
@@ -61,7 +62,7 @@ const Tweet: React.FC<ITweetProps> = ({ item: { _id, user, text, created_at } })
                         </span>
                      </div>
                      <div className="tweet__time">
-                        21m
+                        {formatDate(new Date(createdAt))}
                      </div>
                   </div>
                   <div

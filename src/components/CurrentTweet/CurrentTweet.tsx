@@ -10,6 +10,7 @@ import Loader from "../Loader/Loader";
 import { LikeIcon, ShareIcon, RepostIcon, CommentsIcon, LikeActiveIcon } from "../../assets/icons";
 import CommentsForm from "./CommentsForm/CommentsForm";
 import TweetPopup from "../Tweets/TweetPopup/TweetPopup";
+import { createDateString } from "../../utils/createDateString";
 
 const CurrentTweet = () => {
    const dispatch = useDispatch();
@@ -20,10 +21,6 @@ const CurrentTweet = () => {
    useEffect(() => {
       if (id) dispatch(getTweet(id));
    }, [id, dispatch]);
-
-   const createDateString = (date: string) => {
-      return new Date(date).toString().split(' ').slice(0, 5).join(' ');
-   }
 
    const [popup, setPopup] = useState<boolean>(false);
 
@@ -92,7 +89,7 @@ const CurrentTweet = () => {
                               {tweet.text}
                            </div>
                            <div className="curr-tweet__time">
-                              {createDateString(tweet.created_at)}
+                              {createDateString(new Date(tweet.createdAt))}
                            </div>
                         </div>
                         <div className="curr-tweet__stats tweet-row">

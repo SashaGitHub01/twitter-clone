@@ -9,6 +9,7 @@ import TweetForm from "./TweetForm/TweetForm";
 
 const TweetsList: React.FC = () => {
    const dispatch = useDispatch();
+
    const { items, isLoading, error } = useTypedSelector(state => state.tweets);
 
    useEffect(() => {

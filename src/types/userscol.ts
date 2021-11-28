@@ -7,7 +7,7 @@ export enum Actions {
 export interface IUser {
    fullName: string,
    username: string,
-   avatar_url: string,
+   avatar_url?: string,
    _id: string
 }
 
