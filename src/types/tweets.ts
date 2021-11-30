@@ -1,4 +1,4 @@
-import { IUser } from "./userscol";
+import { ITweet } from "./ITweet";
 
 export enum Actions {
    SET_IS_LOADING = 'tweets/SET_IS_LOADING',
@@ -6,13 +6,6 @@ export enum Actions {
    SET_ERROR = 'tweets/SET_ERROR',
    DELETE_ITEM = 'tweets/DELETE_ITEM',
    ADD_ITEM = 'ADD_ITEM'
-}
-
-export interface ITweet {
-   text: string,
-   _id: string,
-   createdAt: string,
-   user: IUser
 }
 
 export interface IState {

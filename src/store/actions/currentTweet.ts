@@ -1,7 +1,8 @@
 import { Dispatch } from "react";
 import TweetsService from "../../API/TweetsService";
 import { Actions, ActionTypes } from "../../types/currentTweet";
-import { ITweet } from "../../types/tweets";
+import { ITweet } from "../../types/ITweet";
+
 
 //ACTIONS
 export const setTweet = (tweet: ITweet): ActionTypes => (

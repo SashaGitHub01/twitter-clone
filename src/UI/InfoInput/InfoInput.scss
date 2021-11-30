@@ -5,10 +5,16 @@
    border-radius: 5px;
    padding: 1.8rem 1rem 0.6rem 1rem;
    position: relative;
-   margin-bottom: 3.5rem;
 
    &.active {
+      pointer-events: none;
       border: 1px solid $primary;
+
+      &.error {
+         & .info-input__placeholder {
+            color: red;
+         }
+      }
 
       & .info-input__placeholder {
          top: 20%;
@@ -16,6 +22,10 @@
          line-height: 0;
          color: $primary;
       }
+   }
+
+   &.error {
+      border: 1px solid rgb(255, 61, 61);
    }
 
    &__placeholder {

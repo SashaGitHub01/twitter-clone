@@ -1,7 +1,7 @@
 import React from "react";
 import './CommentsForm.scss';
 import { SmileIcon, ImageIcon } from "../../../assets/icons";
-import { IUser } from "../../../types/userscol";
+import { IUser } from "../../../types/IUser";
 
 interface ICommentsFormProps {
    user: IUser

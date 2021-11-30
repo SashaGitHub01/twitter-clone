@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import './Tweet.scss';
 import { Link } from "react-router-dom";
-import { ITweet } from "../../../types/tweets";
 import TweetPopup from "../TweetPopup/TweetPopup";
 import { LikeIcon, DotsIcon, ShareIcon, RepostIcon, CommentsIcon } from "../../../assets/icons";
 import { formatDate } from "../../../utils/formatDate";
+import { ITweet } from "../../../types/ITweet";
 
 interface ITweetProps {
    item: ITweet

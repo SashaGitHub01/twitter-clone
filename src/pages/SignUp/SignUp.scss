@@ -132,6 +132,29 @@
 .signup-form {
    display: flex;
    flex-direction: column;
+   gap: 3rem;
+
+   & .sign-error {
+      border: 1px solid rgba(252, 104, 104, 1);
+      text-align: center;
+      padding: 0.6rem 0;
+
+      & .err-msg {
+         color: rgb(252, 104, 104);
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         & span {
+            font-size: 1.3rem;
+            font-weight: 500;
+         }
+
+         & .err-icon {
+            margin-right: 0.5rem;
+            font-size: 1.8rem;
+         }
+      }
+   }
 }
 
 .form-submit {
@@ -145,6 +168,6 @@
 
    &:disabled {
       pointer-events: none;
-      background-color: $secondary_light;
+      background-color: $primary_disabled;
    }
 }

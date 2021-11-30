@@ -1,11 +1,11 @@
 import React from "react"
 import './Home.scss';
-import { GrTwitter as TwitterI } from 'react-icons/gr';
 import {
    AiOutlineHome as HomeIcon,
    AiOutlineUnorderedList as ListI,
    AiOutlineMail as MessagesI
 } from 'react-icons/ai';
+import { TwitterIcon } from "../../assets/icons";
 import { IoMdNotificationsOutline as NotifI } from 'react-icons/io';
 import { FaRegUser as ProfileI } from 'react-icons/fa';
 import { BsBookmark as BookmarkI, BsSearch as SearchI } from 'react-icons/bs';
@@ -14,11 +14,16 @@ import { NavLink } from "react-router-dom";
 import TrandsColumn from "../../components/HomePage/TrandsColumn/TrandsColumn";
 import UsersColumn from "../../components/HomePage/UsersColumn/UsersColumn";
 import Tweets from "../../components/Tweets/Tweets";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import CurrentTweet from "../../components/CurrentTweet/CurrentTweet";
 
-const Home = () => {
+interface IHomeProps {
+   isAuth: boolean
+}
 
+const Home: React.FC<IHomeProps> = ({ isAuth }) => {
+
+   if (!isAuth) return Navigate({ to: '/' })
 
    return (
       <div className="home">
@@ -27,7 +32,7 @@ const Home = () => {
                <div className="nav-fake"></div>
                <ul className="home-nav__list">
                   <li className="home-nav__item">
-                     <TwitterI className="home-twitter-h" />
+                     <TwitterIcon className="home-twitter-h" />
                   </li>
                   <li className="home-nav__item">
                      <NavLink to='/home'>

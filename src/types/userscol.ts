@@ -1,14 +1,9 @@
+import { IUser } from "./IUser";
+
 export enum Actions {
    SET_IS_LOADING = 'users/SET_IS_LOADING',
    SET_ITEMS = 'users/SET_ITEMS',
    SET_ERROR = 'users/SET_ERROR',
-}
-
-export interface IUser {
-   fullName: string,
-   username: string,
-   avatar_url?: string,
-   _id: string
 }
 
 export interface IState {

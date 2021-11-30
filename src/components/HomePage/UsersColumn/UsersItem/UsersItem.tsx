@@ -1,5 +1,5 @@
 import React from "react";
-import { IUser } from "../../../../types/userscol";
+import { IUser } from "../../../../types/IUser";
 import './UsersItem.scss';
 
 interface IUsersItemProps {

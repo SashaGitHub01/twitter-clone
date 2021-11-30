@@ -1,6 +1,7 @@
 import { Dispatch } from "react";
 import UsersService from "../../API/UsersService";
-import { Actions, ActionTypes, IUser } from "../../types/userscol";
+import { IUser } from "../../types/IUser";
+import { Actions, ActionTypes } from "../../types/userscol";
 
 //ACTIONS
 export const setItems = (items: IUser[]): ActionTypes => (

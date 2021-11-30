@@ -1,14 +1,10 @@
 import axios from "axios";
-import { IUser } from "../types/userscol";
-
-export interface Response<T> {
-   status?: string,
-   data: T
-}
+import { IUser } from "../types/IUser";
+import { IResponse } from "./types/response";
 
 class UsersService {
    static fetchColUsers = async (): Promise<IUser[]> => {
-      const res = await axios.get<Response<IUser[]>>('/users');
+      const res = await axios.get<IResponse<IUser[]>>('/users');
 
       return res.data.data;
    }

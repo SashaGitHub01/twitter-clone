@@ -2,14 +2,18 @@ import React, { useState, useRef } from "react";
 import './InfoInput.scss';
 
 interface IInfoInput {
-   className?: string,
+   className?: string | null,
    placeholder?: string,
    type?: string,
    name: string,
+   onChange: (e: React.ChangeEvent<any>) => void
+   onBlur: (e: React.FocusEvent<any>) => void
    [prop: string]: any,
 }
 
-const InfoInput: React.FC<IInfoInput> = ({ className, type, name, placeholder, ...other }) => {
+const InfoInput: React.FC<IInfoInput> = ({
+   className, type, name, placeholder, onChange, onBlur, ...other
+}) => {
    const [active, setActive] = useState<boolean>(false);
    const [isEmpty, setIsEmpty] = useState<boolean>(true);
 
@@ -23,24 +27,31 @@ const InfoInput: React.FC<IInfoInput> = ({ className, type, name, placeholder, .
       };
    }
 
-   const handleDisable = () => {
+   const handleDisable = (e: React.FocusEvent<HTMLInputElement>) => {
+      onBlur(e);
       setActive(false);
    }
 
    const hanldeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (e.target.value) return setIsEmpty(false);
+      onChange(e);
 
-      setIsEmpty(true);
+      if (e.target.value && isEmpty) {
+         return setIsEmpty(false)
+      };
+
+      if (!e.target.value) setIsEmpty(true);
    }
 
    return (
       <div
          onClick={handleActive}
-         className={className
-            ? `info-input ${className}`
-            : active
-               ? "info-input active"
-               : "info-input"}
+         className={
+            active && className
+               ? `info-input ${className} active`
+               : active
+                  ? "info-input active"
+                  : `info-input ${className}`
+         }
       >
          <div className={isEmpty
             ? "info-input__placeholder"

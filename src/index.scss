@@ -101,3 +101,27 @@ body {
    max-width: 100%;
    position: relative;
 }
+
+.overlay-load {
+   min-height: 100vh;
+   background: $def_bg;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   position: relative;
+   & .load-icon {
+      font-size: 7rem;
+      animation: loader 2s infinite ease;
+   }
+
+   @keyframes loader {
+      0% {
+         color: $primary_disabled;
+         transform: scale(100%);
+      }
+      100% {
+         color: $primary;
+         transform: scale(130%);
+      }
+   }
+}

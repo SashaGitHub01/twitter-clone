@@ -1,4 +1,4 @@
-import { ITweet } from "./tweets";
+import { ITweet } from "./ITweet";
 
 export enum Actions {
    SET_TWEET = 'currentUser/SET_TWEET',
