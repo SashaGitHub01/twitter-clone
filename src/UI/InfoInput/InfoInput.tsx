@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { AlertIcon } from "../../assets/icons";
 import './InfoInput.scss';
 
 interface IInfoInput {
@@ -6,13 +7,14 @@ interface IInfoInput {
    placeholder?: string,
    type?: string,
    name: string,
-   onChange: (e: React.ChangeEvent<any>) => void
-   onBlur: (e: React.FocusEvent<any>) => void
+   onChange: (e: React.ChangeEvent<any>) => void,
+   onBlur: (e: React.FocusEvent<any>) => void,
+   icon?: any,
    [prop: string]: any,
 }
 
 const InfoInput: React.FC<IInfoInput> = ({
-   className, type, name, placeholder, onChange, onBlur, ...other
+   className, type, name, placeholder, onChange, onBlur, icon, ...other
 }) => {
    const [active, setActive] = useState<boolean>(false);
    const [isEmpty, setIsEmpty] = useState<boolean>(true);
@@ -68,6 +70,8 @@ const InfoInput: React.FC<IInfoInput> = ({
             name={name}
             type={type || 'text'}
          />
+         {icon
+            && <AlertIcon className="input-err-icon" />}
       </div>
    )
 }

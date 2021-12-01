@@ -1,7 +1,7 @@
 import { Dispatch } from "react";
 import AuthService from "../../API/AuthService";
 import { Actions, ActionTypes } from "../../types/auth";
-import { ISignIn } from "../../types/ISignIn";
+import { ISignIn, ISignUp } from "../../types/AuthTypes";
 import { IUser } from "../../types/IUser";
 
 export const setUser = (user: IUser): ActionTypes => (
@@ -62,6 +62,23 @@ export const signIn = (data: ISignIn) => {
 
       } catch (err) {
          dispatch(setSignInError(err));
+      }
+   }
+}
+
+export const signUp = (data: ISignUp) => {
+   return async (dispatch: Dispatch<ActionTypes>) => {
+      try {
+         const res = await AuthService.signUp(data);
+
+         if (!res) {
+            return dispatch(setSignUpError('error'));
+         }
+
+         return dispatch(setUser(res));
+
+      } catch (err) {
+         dispatch(setSignUpError(err));
       }
    }
 }

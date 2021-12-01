@@ -1,7 +1,6 @@
 import axios from "axios";
-import { ISignIn } from "../types/ISignIn";
+import { ISignIn, ISignUp } from "../types/AuthTypes";
 import { IUser } from "../types/IUser";
-import { IResponse } from "./types/response";
 
 interface IAuthResponse {
    status?: string,
@@ -12,6 +11,14 @@ interface IAuthResponse {
 class AuthService {
    static signIn = async (data: ISignIn): Promise<IUser | null> => {
       const res = await axios.post<IAuthResponse>('/auth/login', data);
+
+      return res.data.data;
+   }
+
+   static signUp = async (data: ISignUp): Promise<IUser | null> => {
+      const res = await axios.post<IAuthResponse>('/auth/register', data, {
+         withCredentials: true
+      });
 
       return res.data.data;
    }
