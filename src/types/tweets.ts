@@ -5,12 +5,14 @@ export enum Actions {
    SET_ITEMS = 'tweets/SET_ITEMS',
    SET_ERROR = 'tweets/SET_ERROR',
    DELETE_ITEM = 'tweets/DELETE_ITEM',
-   ADD_ITEM = 'ADD_ITEM'
+   ADD_ITEM = 'ADD_ITEM',
+   SET_FORM_ERROR = 'SET_FORM_ERROR'
 }
 
 export interface IState {
    items: ITweet[],
    isLoading: boolean,
+   formError: string | null,
    error: string | null
 }
 
@@ -33,7 +35,13 @@ export interface setError {
    payload: string,
 }
 
+export interface setFormError {
+   type: Actions.SET_FORM_ERROR,
+   payload: string,
+}
+
 export type ActionTypes = setItems
    | setIsLoading
    | setError
-   | addItem;
+   | addItem
+   | setFormError;

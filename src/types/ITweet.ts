@@ -4,5 +4,6 @@ export interface ITweet {
    text: string,
    _id: string,
    createdAt: string,
-   user: IUser
+   user: IUser,
+   images?: string[]
 }

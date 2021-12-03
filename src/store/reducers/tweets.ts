@@ -3,6 +3,7 @@ import { Actions, IState, ActionTypes } from "../../types/tweets";
 const initialState: IState = {
    items: [],
    isLoading: false,
+   formError: null,
    error: null,
 }
 
@@ -13,6 +14,8 @@ const tweetsReducer = (state = initialState, action: ActionTypes) => {
             ...state,
             isLoading: false,
             items: action.payload,
+            error: null,
+            formError: null
          }
 
       case Actions.ADD_ITEM:
@@ -21,11 +24,13 @@ const tweetsReducer = (state = initialState, action: ActionTypes) => {
          if (!state.items.length) {
             newItems = [action.payload];
          } else {
-            newItems = [...state.items, action.payload]
+            newItems = [action.payload, ...state.items]
          }
 
          return {
             ...state,
+            formError: null,
+            error: null,
             items: newItems,
          }
 
@@ -40,6 +45,13 @@ const tweetsReducer = (state = initialState, action: ActionTypes) => {
             ...state,
             isLoading: false,
             error: action.payload,
+         }
+
+      case Actions.SET_FORM_ERROR:
+         return {
+            ...state,
+            isLoading: false,
+            formError: action.payload,
          }
 
 

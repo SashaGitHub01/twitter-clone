@@ -1,0 +1,25 @@
+@import "../../../../scss/variables";
+
+.new-tweet-form {
+   &__textarea {
+      padding: 0px 1rem 0 0px;
+      font-family: inherit;
+      font-weight: 500;
+      min-height: 8rem;
+      line-height: 2.4rem;
+      resize: none;
+      width: 100%;
+      font-size: 2rem;
+      border-bottom: 2px solid rgba(190, 190, 190, 0.15);
+      margin-bottom: 1.2rem;
+
+      &::-webkit-scrollbar {
+         width: 8px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+         background-color: $secondary_light;
+         border-radius: 50px;
+      }
+   }
+}

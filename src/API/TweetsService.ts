@@ -1,4 +1,6 @@
 import axios from "axios";
+import { IImage } from "../types/IImage";
+import { INewTweet } from "../types/INewTweet";
 import { ITweet } from "../types/ITweet";
 import { IResponse } from "./types/response";
 
@@ -9,8 +11,8 @@ class TweetsService {
       return res.data.data;
    }
 
-   static addNewTweet = async (text: string): Promise<ITweet> => {
-      const res = await axios.post<IResponse<ITweet>>('/tweets', text);
+   static addNewTweet = async (text: string, images?: string[]): Promise<ITweet> => {
+      const res = await axios.post<IResponse<ITweet>>('/tweets', { text, images });
 
       return res.data.data;
    }

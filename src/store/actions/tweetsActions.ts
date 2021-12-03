@@ -1,5 +1,7 @@
 import { Dispatch } from "react";
 import TweetsService from "../../API/TweetsService";
+import UploadService from "../../API/UploadService";
+import { INewTweet } from "../../types/INewTweet";
 import { ITweet } from "../../types/ITweet";
 import { Actions, ActionTypes } from "../../types/tweets";
 
@@ -20,6 +22,10 @@ export const setError = (err: string): ActionTypes => (
    { type: Actions.SET_ERROR, payload: err }
 )
 
+export const setFormError = (err: string): ActionTypes => (
+   { type: Actions.SET_FORM_ERROR, payload: err }
+)
+
 //THUNKS
 export const getTweets = () => {
    return async (dispatch: Dispatch<ActionTypes>) => {
@@ -30,19 +36,25 @@ export const getTweets = () => {
 
          dispatch(setItems(res));
       } catch (err: any) {
-         dispatch(setError(err.message));
+         dispatch(setError('error'));
       }
    }
 }
 
-export const createNewTweet = (text: string) => {
+export const createNewTweet = (data: INewTweet) => {
    return async (dispatch: Dispatch<ActionTypes>) => {
       try {
-         const res = await TweetsService.addNewTweet(text);
-         console.log(res)
+         let images;
+
+         if (data.images.length) {
+            images = await UploadService.uploadImages(data.images)
+         }
+
+         const res = await TweetsService.addNewTweet(data.text, images);
+
          dispatch(addItem(res));
       } catch (err) {
-         console.log(err)
+         dispatch(setFormError('error'))
       }
    }
 }

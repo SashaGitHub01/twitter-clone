@@ -10,7 +10,7 @@ interface ITweetProps {
    item: ITweet
 }
 
-const Tweet: React.FC<ITweetProps> = ({ item: { _id, user, text, createdAt } }) => {
+const Tweet: React.FC<ITweetProps> = ({ item: { _id, user, text, createdAt, images } }) => {
    const [popup, setPopup] = useState<boolean>(false);
 
    const ref = useRef<HTMLDivElement>(null);
@@ -80,6 +80,13 @@ const Tweet: React.FC<ITweetProps> = ({ item: { _id, user, text, createdAt } }) 
                   <pre>
                      {text}
                   </pre>
+                  {images && images.length > 0
+                     && images.map(url => (
+                        <div className="tweet__pictures tweet-pictures" key={url}>
+                           <div className="tweet-pictures__item" style={{ backgroundImage: `url(${url})` }}>
+                           </div>
+                        </div>
+                     ))}
                </div>
                <div className="tweet__options">
                   <div className="tweet-default">
