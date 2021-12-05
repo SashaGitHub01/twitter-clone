@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { IUser } from "../../../../types/IUser";
 import './UsersItem.scss';
 
@@ -8,7 +9,7 @@ interface IUsersItemProps {
 
 const UsersItem: React.FC<IUsersItemProps> = ({ item: { fullName, username, avatar_url, _id } }) => {
    return (
-      <li className="home-column__item">
+      <Link to={`/${username}`} className="home-column__item">
          <div className="home-column__avatar">
             <img src={avatar_url} alt="avatar" />
          </div>
@@ -25,7 +26,7 @@ const UsersItem: React.FC<IUsersItemProps> = ({ item: { fullName, username, avat
                <span>Читать</span>
             </div>
          </div>
-      </li>
+      </Link>
    )
 }
 

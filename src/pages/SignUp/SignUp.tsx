@@ -14,10 +14,11 @@ import { AlertIcon } from "../../assets/icons";
 interface ISignUpProps {
    isAuth: boolean,
    signInError: any,
-   signUpError: any
+   signUpError: any,
+   isLoading: boolean
 }
 
-const SignUp: React.FC<ISignUpProps> = ({ isAuth, signInError, signUpError }) => {
+const SignUp: React.FC<ISignUpProps> = ({ isAuth, signInError, signUpError, isLoading }) => {
    const [signUpM, setSignUp] = useState<boolean>(false);
    const [signInM, setSignIn] = useState<boolean>(false);
 
@@ -44,6 +45,10 @@ const SignUp: React.FC<ISignUpProps> = ({ isAuth, signInError, signUpError }) =>
 
       setSignIn(false);
    }
+
+   useEffect(() => {
+      if (isAuth && !isLoading) nav('/home');
+   }, [isAuth]);
 
    // SIGN-IN SCHEMA
    const schemaIn = Yup.object().shape({
@@ -118,10 +123,6 @@ const SignUp: React.FC<ISignUpProps> = ({ isAuth, signInError, signUpError }) =>
          setSubmitting(false);
       }
    })
-
-   useEffect(() => {
-      if (isAuth) nav('/home');
-   }, [isAuth]);
 
    return (
       <div className="signup">

@@ -6,7 +6,8 @@ export enum Actions {
    SET_ERROR = 'SET_ERROR',
    SET_SIGNIN_ERROR = 'SET_SIGNIN_ERROR',
    SET_SIGNUP_ERROR = 'SET_SIGNUP_ERROR',
-   CLOSE_MODAL = 'CLOSE_MODAL'
+   CLOSE_MODAL = 'CLOSE_MODAL',
+   REMOVE_USER = 'REMOVE_USER'
 }
 
 export interface IState {
@@ -27,6 +28,11 @@ export interface setError {
    type: Actions.SET_ERROR,
    payload: string
 }
+
+export interface removeUser {
+   type: Actions.REMOVE_USER,
+}
+
 
 export interface setSignInError {
    type: Actions.SET_SIGNIN_ERROR,
@@ -52,4 +58,5 @@ export type ActionTypes = setUser
    | setError
    | setSignInError
    | setSignUpError
-   | closeModal;
+   | closeModal
+   | removeUser;

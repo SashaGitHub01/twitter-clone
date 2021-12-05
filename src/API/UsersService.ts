@@ -8,6 +8,12 @@ class UsersService {
 
       return res.data.data;
    }
+
+   static fetchUser = async (username: string): Promise<IUser> => {
+      const res = await axios.get<IResponse<IUser>>(`/users/${username}`);
+
+      return res.data.data;
+   }
 }
 
 export default UsersService;

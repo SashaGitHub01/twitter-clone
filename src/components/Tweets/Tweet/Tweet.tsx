@@ -5,6 +5,7 @@ import TweetPopup from "../TweetPopup/TweetPopup";
 import { LikeIcon, DotsIcon, ShareIcon, RepostIcon, CommentsIcon } from "../../../assets/icons";
 import { formatDate } from "../../../utils/formatDate";
 import { ITweet } from "../../../types/ITweet";
+import ImagesList from "../../ImagesList/ImagesList";
 
 interface ITweetProps {
    item: ITweet
@@ -71,7 +72,7 @@ const Tweet: React.FC<ITweetProps> = ({ item: { _id, user, text, createdAt, imag
                      onClick={openPopup}
                   >
                      {popup
-                        && <TweetPopup />}
+                        && <TweetPopup id={_id} />}
                      <DotsIcon
                         className="dots-icon" />
                   </div>
@@ -81,36 +82,32 @@ const Tweet: React.FC<ITweetProps> = ({ item: { _id, user, text, createdAt, imag
                      {text}
                   </pre>
                   {images && images.length > 0
-                     && images.map(url => (
-                        <div className="tweet__pictures tweet-pictures" key={url}>
-                           <div className="tweet-pictures__item" style={{ backgroundImage: `url(${url})` }}>
-                           </div>
-                        </div>
-                     ))}
-               </div>
-               <div className="tweet__options">
-                  <div className="tweet-default">
-                     <button>
-                        <CommentsIcon className="tweet-option-i" />
-                     </button>
-                     <span>1</span>
-                  </div>
-                  <div className="tweet-repost">
-                     <button>
-                        <RepostIcon className="tweet-option-i" />
-                     </button>
-                     <span>142</span>
-                  </div>
-                  <div className="tweet-like">
-                     <button>
-                        <LikeIcon className="tweet-option-i" />
-                     </button>
-                     <span>1</span>
-                  </div>
-                  <div className="tweet-default">
-                     <button>
-                        <ShareIcon className="tweet-option-i" />
-                     </button>
+                     && <ImagesList images={images} />
+                  }
+                  <div className="tweet__options">
+                     <div className="tweet-default">
+                        <button>
+                           <CommentsIcon className="tweet-option-i" />
+                        </button>
+                        <span>1</span>
+                     </div>
+                     <div className="tweet-repost">
+                        <button>
+                           <RepostIcon className="tweet-option-i" />
+                        </button>
+                        <span>142</span>
+                     </div>
+                     <div className="tweet-like">
+                        <button>
+                           <LikeIcon className="tweet-option-i" />
+                        </button>
+                        <span>1</span>
+                     </div>
+                     <div className="tweet-default">
+                        <button>
+                           <ShareIcon className="tweet-option-i" />
+                        </button>
+                     </div>
                   </div>
                </div>
             </div>

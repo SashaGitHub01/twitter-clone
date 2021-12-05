@@ -6,13 +6,15 @@ import tweetsReducer from "./reducers/tweets";
 import userscolReducer from "./reducers/userscol";
 import currentTweetReducer from "./reducers/currentTweet";
 import authReducer from "./reducers/auth";
+import currentProfileReducer from "./reducers/currentProfile";
 
 const rootReducer = combineReducers({
    tweets: tweetsReducer,
    trands: trandsReducer,
    userscol: userscolReducer,
    currentTweet: currentTweetReducer,
-   auth: authReducer
+   auth: authReducer,
+   currentProfile: currentProfileReducer
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

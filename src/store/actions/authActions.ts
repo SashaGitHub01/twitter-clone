@@ -12,9 +12,12 @@ export const closeModal = (): ActionTypes => (
    { type: Actions.CLOSE_MODAL }
 )
 
-
 export const setError = (err: any): ActionTypes => (
    { type: Actions.SET_ERROR, payload: err }
+)
+
+export const removeUser = (): ActionTypes => (
+   { type: Actions.REMOVE_USER }
 )
 
 export const setSignInError = (err: any): ActionTypes => (
@@ -77,6 +80,18 @@ export const signUp = (data: ISignUp) => {
 
          return dispatch(setUser(res));
 
+      } catch (err) {
+         dispatch(setSignUpError(err));
+      }
+   }
+}
+
+export const logout = () => {
+   return async (dispatch: Dispatch<ActionTypes>) => {
+      try {
+         dispatch(removeUser());
+
+         await AuthService.logout();
       } catch (err) {
          dispatch(setSignUpError(err));
       }

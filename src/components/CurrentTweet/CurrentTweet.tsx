@@ -11,6 +11,8 @@ import { LikeIcon, ShareIcon, RepostIcon, CommentsIcon, LikeActiveIcon } from ".
 import CommentsForm from "./CommentsForm/CommentsForm";
 import TweetPopup from "../Tweets/TweetPopup/TweetPopup";
 import { createDateString } from "../../utils/createDateString";
+import ImagesList from "../ImagesList/ImagesList";
+import Linkify from 'react-linkify';
 
 const CurrentTweet = () => {
    const dispatch = useDispatch();
@@ -38,6 +40,7 @@ const CurrentTweet = () => {
    const closePopup = (e: Event) => {
       checkClick(e);
    }
+
    useEffect(() => {
       if (popup) {
          document.documentElement.addEventListener('click', closePopup);
@@ -46,7 +49,7 @@ const CurrentTweet = () => {
       } else {
          return document.documentElement.removeEventListener('click', closePopup);
       }
-   }, [popup, closePopup])
+   }, [popup, closePopup]);
 
    return (
       <>
@@ -80,13 +83,19 @@ const CurrentTweet = () => {
                               ref={ref}
                            >
                               {popup
-                                 && <TweetPopup />}
+                                 && <TweetPopup id={tweet._id} />}
                               <DotsIcon className="dots-i" />
                            </div>
                         </div>
                         <div className="curr-tweet__content">
                            <div className="curr-tweet__body">
-                              {tweet.text}
+                              <Linkify>
+                                 <pre>{tweet.text}</pre>
+                              </Linkify>
+                              {
+                                 tweet.images && tweet.images.length > 0
+                                 && <ImagesList images={tweet.images} />
+                              }
                            </div>
                            <div className="curr-tweet__time">
                               {createDateString(new Date(tweet.createdAt))}

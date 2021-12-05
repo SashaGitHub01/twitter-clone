@@ -23,6 +23,17 @@ const authReducer = (state = initialState, action: ActionTypes) => {
             error: null
          }
 
+      case Actions.REMOVE_USER:
+         return {
+            ...state,
+            user: null,
+            isLoading: false,
+            isAuth: false,
+            signInError: null,
+            signUpError: null,
+            error: null
+         }
+
       case Actions.CLOSE_MODAL:
          return {
             ...state,

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import './Home.scss';
 import {
    AiOutlineHome as HomeIcon,
@@ -16,14 +16,24 @@ import UsersColumn from "../../components/HomePage/UsersColumn/UsersColumn";
 import Tweets from "../../components/Tweets/Tweets";
 import { Routes, Route, Navigate } from "react-router-dom";
 import CurrentTweet from "../../components/CurrentTweet/CurrentTweet";
+import UserPanel from "../../components/HomePage/UserPanel/UserPanel";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { useNavigate } from "react-router-dom";
+import Profile from "../../components/Profile/Profile";
+import { IUser } from "../../types/IUser";
 
 interface IHomeProps {
-   isAuth: boolean
+   isAuth: boolean,
+   isLoading: boolean,
 }
 
-const Home: React.FC<IHomeProps> = ({ isAuth }) => {
+const Home: React.FC<IHomeProps> = ({ isAuth, isLoading }) => {
+   const user = useTypedSelector(state => state.auth.user);
+   const navigate = useNavigate();
 
-   if (!isAuth) return Navigate({ to: '/' })
+   useEffect(() => {
+      if (!isAuth && !isLoading) navigate('/');
+   }, [isAuth])
 
    return (
       <div className="home">
@@ -31,68 +41,73 @@ const Home: React.FC<IHomeProps> = ({ isAuth }) => {
             <nav className="home__nav home-nav">
                <div className="nav-fake"></div>
                <ul className="home-nav__list">
-                  <li className="home-nav__item">
-                     <TwitterIcon className="home-twitter-h" />
-                  </li>
-                  <li className="home-nav__item">
-                     <NavLink to='/home'>
-                        <HomeIcon className="home-nav-icon" />
-                        <div>
-                           Главная
-                        </div>
-                     </NavLink>
-                  </li>
-                  <li className="home-nav__item">
-                     <NavLink to='/search'>
-                        <SearchI className="home-nav-icon" />
-                        <div>
-                           Поиск
-                        </div>
-                     </NavLink>
-                  </li>
-                  <li className="home-nav__item">
-                     <NavLink to='/notifications'>
-                        <NotifI className="home-nav-icon" />
-                        <div>
-                           Уведомления
-                        </div>
-                     </NavLink>
-                  </li>
-                  <li className="home-nav__item">
-                     <NavLink to='/messages'>
-                        <MessagesI className="home-nav-icon" />
-                        <div>
-                           Сообщения
-                        </div>
-                     </NavLink>
-                  </li>
-                  <li className="home-nav__item">
-                     <NavLink to='/bookmarks'>
-                        <BookmarkI className="home-nav-icon" />
-                        <div>
-                           Закладки
-                        </div>
-                     </NavLink>
-                  </li>
-                  <li className="home-nav__item">
-                     <NavLink to='/lists'>
-                        <ListI className="home-nav-icon" />
-                        <div>
-                           Список
-                        </div>
-                     </NavLink>
-                  </li>
-                  <li className="home-nav__item">
-                     <NavLink to='/profile'>
-                        <ProfileI className="home-nav-icon" />
-                        <div>
-                           Профиль
-                        </div>
-                     </NavLink>
-                  </li>
-                  <li className="home-nav__btn">
-                     <Feather className="home-new-tweet" />
-                     <span>Новый твит</span>
+                  <div className="home-nav__list-main">
+                     <li className="home-nav__item">
+                        <TwitterIcon className="home-twitter-h" />
+                     </li>
+                     <li className="home-nav__item">
+                        <NavLink to='/home'>
+                           <HomeIcon className="home-nav-icon" />
+                           <div>
+                              Главная
+                           </div>
+                        </NavLink>
+                     </li>
+                     <li className="home-nav__item">
+                        <NavLink to='/search'>
+                           <SearchI className="home-nav-icon" />
+                           <div>
+                              Поиск
+                           </div>
+                        </NavLink>
+                     </li>
+                     <li className="home-nav__item">
+                        <NavLink to='/notifications'>
+                           <NotifI className="home-nav-icon" />
+                           <div>
+                              Уведомления
+                           </div>
+                        </NavLink>
+                     </li>
+                     <li className="home-nav__item">
+                        <NavLink to='/messages'>
+                           <MessagesI className="home-nav-icon" />
+                           <div>
+                              Сообщения
+                           </div>
+                        </NavLink>
+                     </li>
+                     <li className="home-nav__item">
+                        <NavLink to='/bookmarks'>
+                           <BookmarkI className="home-nav-icon" />
+                           <div>
+                              Закладки
+                           </div>
+                        </NavLink>
+                     </li>
+                     <li className="home-nav__item">
+                        <NavLink to='/lists'>
+                           <ListI className="home-nav-icon" />
+                           <div>
+                              Список
+                           </div>
+                        </NavLink>
+                     </li>
+                     <li className="home-nav__item">
+                        <NavLink to={`/${user?.username}`}>
+                           <ProfileI className="home-nav-icon" />
+                           <div>
+                              Профиль
+                           </div>
+                        </NavLink>
+                     </li>
+                     <li className="home-nav__btn">
+                        <Feather className="home-new-tweet" />
+                        <span>Новый твит</span>
+                     </li>
+                  </div>
+                  <li className="home-nav__panel">
+                     {user && <UserPanel user={user} />}
                   </li>
                </ul>
             </nav>
@@ -102,6 +117,7 @@ const Home: React.FC<IHomeProps> = ({ isAuth }) => {
                <Routes>
                   <Route path='/home' element={<Tweets />} />
                   <Route path='/:username/:id' element={<CurrentTweet />} />
+                  <Route path='/:username' element={<Profile />} />
                </Routes>
             </div>
             <div className="home__aside home-aside">

@@ -22,6 +22,12 @@ class TweetsService {
 
       return res.data.data;
    }
+
+   static deleteTweet = async (id: string): Promise<ITweet> => {
+      const res = await axios.delete<IResponse<ITweet>>(`/tweets/${id}`);
+
+      return res.data.data;
+   }
 }
 
 export default TweetsService;

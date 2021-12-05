@@ -41,6 +41,8 @@
             font-size: 1.6rem;
             text-overflow: ellipsis;
             white-space: nowrap;
+            color: $secondary;
+
             &:hover {
                text-decoration: underline;
             }

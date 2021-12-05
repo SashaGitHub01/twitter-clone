@@ -28,6 +28,12 @@ class AuthService {
 
       return res.data.data;
    }
+
+   static logout = async (): Promise<any> => {
+      await axios.get('/auth/logout');
+
+      return;
+   }
 }
 
 export default AuthService;

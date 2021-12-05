@@ -1,3 +1,5 @@
+import { ITweet } from "./ITweet";
+
 export interface IUser {
    fullName: string,
    username: string,
@@ -6,4 +8,5 @@ export interface IUser {
    avatar_url?: string,
    confirmed?: boolean,
    confirmed_hash?: string,
+   tweets?: ITweet[]
 }

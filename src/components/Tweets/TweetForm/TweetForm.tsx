@@ -17,6 +17,7 @@ const TweetForm: React.FC = () => {
    const [images, setImages] = useState<IImage[]>([]);
 
    const formError = useTypedSelector(state => state.tweets.formError)
+   const user = useTypedSelector(state => state.auth.user)
 
    const dispatch = useDispatch();
 
@@ -41,50 +42,52 @@ const TweetForm: React.FC = () => {
    })
 
    return (
-      <div className="h-content__create-f create-form">
-         <div className="create-form__avatar">
-            <img src='' alt="avatar" />
-         </div>
-         <div className="create-form__body">
-            <form className="create-form__form new-tweet-form" onSubmit={formik.handleSubmit}>
-               <TweetFormTextarea
-                  handleChange={formik.handleChange}
-                  value={formik.values.text}
-               />
-               {images.length
-                  ? <UploadsList
-                     images={images}
-                     setImages={setImages}
+      user
+         ? <div className="h-content__create-f create-form">
+            <div className="create-form__avatar">
+               <img src={user.avatar_url} alt="avatar" />
+            </div>
+            <div className="create-form__body">
+               <form className="create-form__form new-tweet-form" onSubmit={formik.handleSubmit}>
+                  <TweetFormTextarea
+                     handleChange={formik.handleChange}
+                     value={formik.values.text}
                   />
-                  : null}
-               <div className="new-tweet-form__footer">
-                  <div className="new-tweet-form__btns">
-                     <Gif className='new-tweet-icon' />
-                     <UploadImages
-                        handleChange={formik.handleChange}
-                        value={formik.values.images}
+                  {images.length
+                     ? <UploadsList
+                        images={images}
                         setImages={setImages}
                      />
-                     <Smile className='new-tweet-icon' />
+                     : null}
+                  <div className="new-tweet-form__footer">
+                     <div className="new-tweet-form__btns">
+                        <Gif className='new-tweet-icon' />
+                        <UploadImages
+                           handleChange={formik.handleChange}
+                           value={formik.values.images}
+                           setImages={setImages}
+                        />
+                        <Smile className='new-tweet-icon' />
+                     </div>
+                     <div className="new-tweet-form__control">
+                        {formError
+                           && <div className="form-error">
+                              <AlertIcon className="error-icon" />
+                              <div>Что-то пошло не так...</div>
+                           </div>}
+                        <button
+                           disabled={!formik.values.text && images.length === 0 || formik.isSubmitting}
+                           type="submit"
+                           className="new-tweet-form__submit"
+                        >
+                           Tweet
+                        </button>
+                     </div>
                   </div>
-                  <div className="new-tweet-form__control">
-                     {formError
-                        && <div className="form-error">
-                           <AlertIcon className="error-icon" />
-                           <div>Что-то пошло не так...</div>
-                        </div>}
-                     <button
-                        disabled={!formik.values.text && images.length === 0 || formik.isSubmitting}
-                        type="submit"
-                        className="new-tweet-form__submit"
-                     >
-                        Tweet
-                     </button>
-                  </div>
-               </div>
-            </form>
+               </form>
+            </div>
          </div>
-      </div>
+         : null
    )
 }
 

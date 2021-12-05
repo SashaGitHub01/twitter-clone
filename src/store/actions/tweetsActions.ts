@@ -14,6 +14,10 @@ export const addItem = (item: ITweet): ActionTypes => (
    { type: Actions.ADD_ITEM, payload: item }
 )
 
+export const deleteItem = (id: string): ActionTypes => (
+   { type: Actions.DELETE_ITEM, payload: id }
+)
+
 export const setIsLoading = (): ActionTypes => (
    { type: Actions.SET_IS_LOADING }
 )
@@ -53,6 +57,18 @@ export const createNewTweet = (data: INewTweet) => {
          const res = await TweetsService.addNewTweet(data.text, images);
 
          dispatch(addItem(res));
+      } catch (err) {
+         dispatch(setFormError('error'))
+      }
+   }
+}
+
+export const deeleteTweet = (id: string) => {
+   return async (dispatch: Dispatch<ActionTypes>) => {
+      try {
+         dispatch(deleteItem(id));
+
+         await TweetsService.deleteTweet(id);
       } catch (err) {
          dispatch(setFormError('error'))
       }

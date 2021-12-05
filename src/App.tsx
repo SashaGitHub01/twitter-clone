@@ -23,9 +23,13 @@ function App() {
                   <TwitterIcon className='load-icon' />
                </div>
                : <Routes>
-                  <Route path='/*' element={<Home isAuth={isAuth} />} />
+                  <Route path='/*' element={<Home
+                     isAuth={isAuth}
+                     isLoading={isLoading}
+                  />} />
                   <Route path='/' element={<SignUp
                      isAuth={isAuth}
+                     isLoading={isLoading}
                      signInError={signInError}
                      signUpError={signUpError}
                   />}

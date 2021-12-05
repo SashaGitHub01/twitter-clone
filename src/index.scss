@@ -102,6 +102,16 @@ body {
    position: relative;
 }
 
+pre {
+   color: $secondary;
+   font-family: inherit;
+
+   & a {
+      color: $primary;
+      font-weight: 300;
+   }
+}
+
 .overlay-load {
    min-height: 100vh;
    background: $def_bg;

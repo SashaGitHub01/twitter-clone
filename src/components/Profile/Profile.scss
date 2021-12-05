@@ -1,0 +1,121 @@
+@import "../../scss/variables";
+
+.profile {
+   &__col {
+      display: flex;
+      flex-direction: column;
+   }
+   .pr-head {
+      max-width: 100%;
+      position: relative;
+
+      &::after {
+         content: "";
+         position: absolute;
+         left: 0;
+         bottom: 0;
+         width: 100%;
+         height: 1px;
+         background-color: $secondary_light;
+      }
+
+      &__background {
+         height: 22rem;
+         background-color: rgb(226, 226, 226);
+         position: relative;
+      }
+
+      &__avatar {
+         width: 14rem;
+         height: 14rem;
+         border-radius: 50%;
+         transform: translateY(+50%);
+         border: 4px solid rgb(255, 255, 255);
+         position: absolute;
+         bottom: 0;
+         margin-left: 1.5rem;
+
+         & img {
+            max-width: 100%;
+            border-radius: 50%;
+            display: block;
+         }
+      }
+
+      &__row {
+         display: flex;
+         justify-content: space-between;
+         padding: 0rem 1.5rem 0rem 1.5rem;
+         position: relative;
+         width: 100%;
+         position: relative;
+         justify-content: flex-end;
+      }
+      &__button {
+         padding-top: 1.5rem;
+         & .follow-btn {
+            cursor: pointer;
+            border-radius: 222px;
+            padding: 0 1.6rem;
+            min-height: 32px;
+            color: #fff;
+            background-color: $btn_black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.6rem;
+
+            &:hover {
+               background-color: $btn_black_hover;
+            }
+         }
+      }
+
+      &__info {
+         display: flex;
+         flex-direction: column;
+         padding: 3.25rem 1.5rem 2rem 1.5rem;
+      }
+      &__name {
+         font-weight: bold;
+         font-size: 2.2rem;
+         line-height: 2.8rem;
+      }
+      &__login {
+         font-weight: 300;
+         color: $grey;
+         font-size: 1.4rem;
+         line-height: 2rem;
+      }
+      &__joined {
+         display: flex;
+         align-items: center;
+         padding: 1.5rem 0;
+         font-weight: 300;
+         color: $grey;
+         font-size: 1.5rem;
+         gap: 0.5rem;
+
+         & .cal-icon {
+            font-size: 1.7rem;
+         }
+      }
+      &__followers-row {
+         display: flex;
+         align-items: center;
+         gap: 2rem;
+         font-weight: 300;
+         color: $grey;
+         font-size: 1.6rem;
+         line-height: 2.1rem;
+      }
+      &__followers-item {
+         & b {
+            color: $secondary;
+         }
+         & span {
+         }
+      }
+   }
+}

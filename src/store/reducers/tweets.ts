@@ -34,6 +34,12 @@ const tweetsReducer = (state = initialState, action: ActionTypes) => {
             items: newItems,
          }
 
+      case Actions.DELETE_ITEM:
+         return {
+            ...state,
+            items: state.items.filter((item) => item._id !== action.payload)
+         }
+
       case Actions.SET_IS_LOADING:
          return {
             ...state,

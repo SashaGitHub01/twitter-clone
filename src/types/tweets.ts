@@ -5,8 +5,8 @@ export enum Actions {
    SET_ITEMS = 'tweets/SET_ITEMS',
    SET_ERROR = 'tweets/SET_ERROR',
    DELETE_ITEM = 'tweets/DELETE_ITEM',
-   ADD_ITEM = 'ADD_ITEM',
-   SET_FORM_ERROR = 'SET_FORM_ERROR'
+   ADD_ITEM = 'tweets/ADD_ITEM',
+   SET_FORM_ERROR = 'tweets/SET_FORM_ERROR'
 }
 
 export interface IState {
@@ -24,6 +24,11 @@ export interface setItems {
 export interface addItem {
    type: Actions.ADD_ITEM,
    payload: ITweet,
+}
+
+export interface deleteItem {
+   type: Actions.DELETE_ITEM,
+   payload: string,
 }
 
 export interface setIsLoading {
@@ -44,4 +49,5 @@ export type ActionTypes = setItems
    | setIsLoading
    | setError
    | addItem
+   | deleteItem
    | setFormError;
