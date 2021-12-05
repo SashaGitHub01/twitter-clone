@@ -88,19 +88,19 @@
          font-size: 1.4rem;
          line-height: 2rem;
       }
-      &__joined {
-         display: flex;
-         align-items: center;
-         padding: 1.5rem 0;
-         font-weight: 300;
-         color: $grey;
-         font-size: 1.5rem;
-         gap: 0.5rem;
 
-         & .cal-icon {
-            font-size: 1.7rem;
+      &__about {
+         padding: 0.75rem 0;
+
+         & span {
+            font-size: 1.6rem;
+            color: $secondary;
+            letter-spacing: 0.0025em;
+            line-height: 2.2rem;
+            font-weight: 300;
          }
       }
+
       &__followers-row {
          display: flex;
          align-items: center;
@@ -115,6 +115,72 @@
             color: $secondary;
          }
          & span {
+         }
+      }
+
+      & .pr-info-list {
+         display: flex;
+         align-items: center;
+         padding: 0.6rem 0px 1.1rem 0px;
+         font-weight: 300;
+         color: $grey;
+         font-size: 1.5rem;
+         gap: 1.45rem;
+
+         &__item {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            & .pr-info-icon {
+               color: $grey;
+               font-size: 1.7rem;
+            }
+
+            & .link-icon {
+               font-size: 1.9rem;
+            }
+         }
+      }
+
+      .pr-head-tab {
+         &__list {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+         }
+         &__item {
+            cursor: pointer;
+            flex: 0 0 25%;
+            text-align: center;
+            &:hover {
+               background-color: $secondary_light;
+            }
+            span {
+               display: inline-block;
+               font-size: 1.6rem;
+               color: $grey;
+               font-weight: bold;
+               padding: 2rem 0.5rem;
+               position: relative;
+            }
+            .underline {
+               height: 4px;
+               width: 100%;
+               background-color: transparent;
+               position: absolute;
+               border-radius: 1000px;
+               bottom: 0;
+               left: 0;
+            }
+
+            &.active {
+               span {
+                  color: $secondary;
+               }
+               .underline {
+                  background-color: $primary;
+               }
+            }
          }
       }
    }

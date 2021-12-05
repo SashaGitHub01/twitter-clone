@@ -5,8 +5,9 @@ export interface IUser {
    username: string,
    email: string,
    _id: string,
+   createdAt: string
    avatar_url?: string,
    confirmed?: boolean,
    confirmed_hash?: string,
-   tweets?: ITweet[]
+   tweets?: ITweet[],
 }

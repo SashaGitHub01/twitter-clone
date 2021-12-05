@@ -1,12 +1,22 @@
 import { Dispatch } from "react";
+import TweetsService from "../../API/TweetsService";
 import UsersService from "../../API/UsersService";
 import { Actions, ActionTypes } from "../../types/currentProfile";
+import { ITweet } from "../../types/ITweet";
 import { IUser } from "../../types/IUser";
 
 
 //ACTIONS
 export const setProfile = (user: IUser): ActionTypes => (
    { type: Actions.SET_PROFILE, payload: user }
+)
+
+export const setMedia = (items: ITweet[]): ActionTypes => (
+   { type: Actions.SET_MEDIA, payload: items }
+)
+
+export const deleteComment = (id: string): ActionTypes => (
+   { type: Actions.DELETE_COMMENT, payload: id }
 )
 
 export const setIsLoading = (): ActionTypes => (
@@ -28,6 +38,30 @@ export const getProfile = (username: string) => {
          dispatch(setProfile(res));
       } catch (err: any) {
          dispatch(setError(err.message));
+      }
+   }
+}
+
+export const getMedia = () => {
+   return async (dispatch: Dispatch<ActionTypes>) => {
+      try {
+         const res = await TweetsService.fetchMediaTweets();
+
+         dispatch(setMedia(res));
+      } catch (err: any) {
+         dispatch(setError(err))
+      }
+   }
+}
+
+export const fetchDeleteComment = (id: string) => {
+   return async (dispatch: Dispatch<ActionTypes>) => {
+      try {
+         await TweetsService.fetchMediaTweets();
+
+         dispatch(deleteComment(id));
+      } catch (err: any) {
+         dispatch(setError(err))
       }
    }
 }

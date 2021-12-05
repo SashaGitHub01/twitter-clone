@@ -11,6 +11,12 @@ class TweetsService {
       return res.data.data;
    }
 
+   static fetchMediaTweets = async (): Promise<ITweet[]> => {
+      const res = await axios.get<IResponse<ITweet[]>>('/tweets/filter/media');
+
+      return res.data.data;
+   }
+
    static addNewTweet = async (text: string, images?: string[]): Promise<ITweet> => {
       const res = await axios.post<IResponse<ITweet>>('/tweets', { text, images });
 

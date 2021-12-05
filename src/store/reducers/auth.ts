@@ -3,7 +3,7 @@ import { IState, ActionTypes, Actions } from "../../types/auth";
 
 const initialState: IState = {
    user: null,
-   isLoading: false,
+   isLoading: true,
    isAuth: false,
    signInError: null,
    error: null,

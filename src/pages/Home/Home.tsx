@@ -116,8 +116,8 @@ const Home: React.FC<IHomeProps> = ({ isAuth, isLoading }) => {
             <div className="home__content h-content">
                <Routes>
                   <Route path='/home' element={<Tweets />} />
-                  <Route path='/:username/:id' element={<CurrentTweet />} />
-                  <Route path='/:username' element={<Profile />} />
+                  <Route path='/:username/status/:id' element={<CurrentTweet />} />
+                  <Route path='/:username/*' element={<Profile />} />
                </Routes>
             </div>
             <div className="home__aside home-aside">

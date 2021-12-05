@@ -1,9 +1,9 @@
 import { ITweet } from "./ITweet";
 
 export enum Actions {
-   SET_TWEET = 'currentUser/SET_TWEET',
-   SET_IS_LOADING = 'currentUser/SET_IS_LOADING',
-   SET_ERROR = 'currentUser/SET_ERROR',
+   SET_TWEET = 'currentTweet/SET_TWEET',
+   SET_IS_LOADING = 'currentTweet/SET_IS_LOADING',
+   SET_ERROR = 'currentTweet/SET_ERROR',
 }
 
 

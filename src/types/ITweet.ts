@@ -1,3 +1,4 @@
+import { IComment } from "./IComment";
 import { IUser } from "./IUser";
 
 export interface ITweet {
@@ -5,5 +6,6 @@ export interface ITweet {
    _id: string,
    createdAt: string,
    user: IUser,
-   images?: string[]
+   images?: string[],
+   comments?: IComment[],
 }

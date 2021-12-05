@@ -13,6 +13,7 @@ import TweetPopup from "../Tweets/TweetPopup/TweetPopup";
 import { createDateString } from "../../utils/createDateString";
 import ImagesList from "../ImagesList/ImagesList";
 import Linkify from 'react-linkify';
+import CommentsList from "./CommentsList/CommentsList";
 
 const CurrentTweet = () => {
    const dispatch = useDispatch();
@@ -27,6 +28,7 @@ const CurrentTweet = () => {
    const [popup, setPopup] = useState<boolean>(false);
 
    const ref = useRef<HTMLDivElement>(null);
+
    const checkClick = (e: Event) => {
       if (popup && ref.current && !ref.current.contains(e.target as Node)) {
          setPopup(false)
@@ -125,6 +127,10 @@ const CurrentTweet = () => {
                         </div>
                      </div>
                      <CommentsForm user={tweet.user} />
+                     <div className="curr-tweet__comments">
+                        {tweet.comments
+                           && <CommentsList comments={tweet.comments} />}
+                     </div>
                   </div>
                </>}
       </>

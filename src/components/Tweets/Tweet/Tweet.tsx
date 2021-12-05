@@ -44,7 +44,7 @@ const Tweet: React.FC<ITweetProps> = ({ item: { _id, user, text, createdAt, imag
 
    return (
       <Link
-         to={`/${user.username}/${_id}`}
+         to={`/${user.username}/status/${_id}`}
          className="tweet"
       >
          <div className={popup ? "tweet__item disabled" : 'tweet__item'}>

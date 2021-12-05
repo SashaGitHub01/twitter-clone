@@ -1,0 +1,83 @@
+@import "../../../../scss/variables";
+
+.comment-item {
+   padding: 1.5rem 1.5rem;
+   border-bottom: 1px solid $secondary_light;
+   position: relative;
+   &__row {
+      display: flex;
+      gap: 1rem;
+      max-width: 100%;
+   }
+   &__avatar {
+      flex: 0 0 50px;
+
+      & img {
+         max-width: 100%;
+         border-radius: 50%;
+         display: block;
+      }
+   }
+   &__content {
+      flex: 1 1 auto;
+      color: $secondary;
+   }
+   &__user {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1.6rem;
+   }
+
+   &__name {
+      font-weight: bold;
+   }
+   &__login {
+      font-weight: 300;
+      color: $grey;
+      line-height: 2rem;
+   }
+   &__body {
+      padding: 1rem 0;
+   }
+   &__dots {
+      position: relative;
+
+      & .comm-dots-btn {
+         height: 2.5rem;
+         width: 2.5rem;
+         border-radius: 50%;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         cursor: pointer;
+
+         &:hover {
+            background-color: $secondary_light;
+         }
+
+         & .comment-dots-icon {
+            font-size: 1.8rem;
+            color: $grey;
+         }
+      }
+   }
+
+   &__time {
+      & div {
+         color: $grey;
+         display: flex;
+         align-items: center;
+         gap: 0.5rem;
+
+         & .comm-reply-icon {
+            font-size: 1.8rem;
+         }
+
+         & span {
+            font-size: 1.4rem;
+            font-weight: 300;
+         }
+      }
+   }
+}
