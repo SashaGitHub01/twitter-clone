@@ -2,17 +2,26 @@ import React, { useEffect, useRef, useState } from "react";
 import './Tweet.scss';
 import { Link } from "react-router-dom";
 import TweetPopup from "../TweetPopup/TweetPopup";
-import { LikeIcon, DotsIcon, ShareIcon, RepostIcon, CommentsIcon } from "../../../assets/icons";
+import {
+   LikeIcon, DotsIcon, ShareIcon,
+   RepostIcon, CommentsIcon, LikeActiveIcon
+} from "../../../assets/icons";
 import { formatDate } from "../../../utils/formatDate";
 import { ITweet } from "../../../types/ITweet";
 import ImagesList from "../../ImagesList/ImagesList";
+import { useDispatch } from "react-redux";
+import { fetchCreateLike, fetchDeleteLike } from "../../../store/actions/currentTweet";
 
 interface ITweetProps {
    item: ITweet
 }
 
-const Tweet: React.FC<ITweetProps> = ({ item: { _id, user, text, createdAt, images } }) => {
+const Tweet: React.FC<ITweetProps> = ({ item: { _id, user, text, createdAt, images, comments, likes } }) => {
    const [popup, setPopup] = useState<boolean>(false);
+   const [isLiked, setIsLiked] = useState<boolean>(user.likes.includes(_id))
+   const [likesLength, setLikesLength] = useState<number>(user.likes.length);
+
+   const dispatch = useDispatch();
 
    const ref = useRef<HTMLDivElement>(null);
 
@@ -41,6 +50,22 @@ const Tweet: React.FC<ITweetProps> = ({ item: { _id, user, text, createdAt, imag
          return document.documentElement.removeEventListener('click', closePopup);
       }
    }, [popup, closePopup])
+
+   const handleLike = (e: React.MouseEvent) => {
+      e.preventDefault();
+
+      if (!isLiked) {
+         setIsLiked(true);
+         setLikesLength(likesLength + 1);
+
+         return dispatch(fetchCreateLike(_id));
+      } else {
+         setIsLiked(false);
+         setLikesLength(likesLength - 1);
+
+         return dispatch(fetchDeleteLike(_id));
+      }
+   }
 
    return (
       <Link
@@ -89,7 +114,11 @@ const Tweet: React.FC<ITweetProps> = ({ item: { _id, user, text, createdAt, imag
                         <button>
                            <CommentsIcon className="tweet-option-i" />
                         </button>
-                        <span>1</span>
+                        <span>
+                           {comments
+                              ? comments.length
+                              : null}
+                        </span>
                      </div>
                      <div className="tweet-repost">
                         <button>
@@ -98,10 +127,14 @@ const Tweet: React.FC<ITweetProps> = ({ item: { _id, user, text, createdAt, imag
                         <span>142</span>
                      </div>
                      <div className="tweet-like">
-                        <button>
-                           <LikeIcon className="tweet-option-i" />
+                        <button onClick={handleLike}>
+                           {isLiked
+                              ? <LikeActiveIcon className="tweet-option-i liked" />
+                              : <LikeIcon className="tweet-option-i" />}
                         </button>
-                        <span>1</span>
+                        <span>
+                           {likesLength}
+                        </span>
                      </div>
                      <div className="tweet-default">
                         <button>

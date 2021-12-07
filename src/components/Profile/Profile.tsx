@@ -12,6 +12,7 @@ import { useUserPath } from "../../hooks/useUserPath";
 import { useTabName } from "../../hooks/useTabName";
 import ProfileTweets from "./ProfileTweets/ProfileTweets";
 import ProfileMedia from "./ProfileMedia/ProfileMedia";
+import ProfileModal from "./ProfileModal/ProfileModal";
 
 const tabs = [
    { name: 'Твиты', path: '', id: 1 },
@@ -21,23 +22,41 @@ const tabs = [
 ]
 
 const Profile: React.FC = () => {
+   const [modal, setModal] = useState<boolean>(false);
+
    const activeTab = useTabName();
    const userPath = useUserPath();
    const dispatch = useDispatch();
+   let isOwner;
+
+   const { error, isLoading, profile } = useTypedSelector(state => state.currentProfile);
+   const { user } = useTypedSelector(state => state.auth)
+
+   if (user && profile) {
+      isOwner = user._id === profile._id;
+   }
 
    const [tab, setTab] = useState<string>(activeTab || '');
 
-   const { error, isLoading, profile } = useTypedSelector(state => state.currentProfile)
 
    useEffect(() => {
       if (userPath) dispatch(getProfile(userPath))
    }, [userPath, dispatch])
+
+   const handleClose = () => {
+      setModal(false);
+   }
+
+   const handleOpen = () => {
+      setModal(true);
+   }
 
    return (
       <>
          <ContentTitle>@{userPath}</ContentTitle>
          {profile
             ? <div className="profile">
+               <ProfileModal handleClose={handleClose} user={profile} />
                <div className="profile__col">
                   <div className="profile__head pr-head">
                      <div className="pr-head__background">
@@ -47,9 +66,13 @@ const Profile: React.FC = () => {
                      </div>
                      <div className="pr-head__row">
                         <div className="pr-head__button">
-                           <div className="follow-btn">
-                              Читать
-                           </div>
+                           {isOwner
+                              ? <div className="edit-btn">
+                                 Редактировать
+                              </div>
+                              : <div className="follow-btn">
+                                 Читать
+                              </div>}
                         </div>
                      </div>
                      <div className="pr-head__info">

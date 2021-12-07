@@ -53,6 +53,25 @@
       }
       &__button {
          padding-top: 1.5rem;
+
+         & .edit-btn {
+            cursor: pointer;
+            border-radius: 222px;
+            padding: 0 1.6rem;
+            min-height: 32px;
+            color: #fff;
+            background-color: $primary;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.6rem;
+
+            &:hover {
+               background-color: $primary_dark;
+            }
+         }
+
          & .follow-btn {
             cursor: pointer;
             border-radius: 222px;

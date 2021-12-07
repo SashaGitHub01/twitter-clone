@@ -6,7 +6,7 @@ export enum Actions {
    SET_IS_LOADING = 'currentUser/SET_IS_LOADING',
    SET_ERROR = 'currentUser/SET_ERROR',
    SET_MEDIA = 'currentUser/SET_MEDIAS',
-   DELETE_COMMENT = 'currentUser/DELETE_COMMENT'
+
 }
 
 
@@ -22,10 +22,6 @@ export interface setProfile {
    payload: IUser
 }
 
-export interface deleteComment {
-   type: Actions.DELETE_COMMENT,
-   payload: string
-}
 
 export interface setMedia {
    type: Actions.SET_MEDIA,
@@ -44,5 +40,4 @@ export interface setIsLoading {
 export type ActionTypes = setProfile
    | setError
    | setIsLoading
-   | setMedia
-   | deleteComment;
+   | setMedia;

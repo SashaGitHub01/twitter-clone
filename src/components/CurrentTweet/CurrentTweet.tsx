@@ -5,7 +5,7 @@ import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useParams } from "react-router-dom";
 import ContentTitle from "../ContentTitle/ContentTitle";
 import { DotsIcon } from "../../assets/icons";
-import { getTweet } from "../../store/actions/currentTweet";
+import { fetchCreateLike, fetchDeleteLike, getTweet } from "../../store/actions/currentTweet";
 import Loader from "../Loader/Loader";
 import { LikeIcon, ShareIcon, RepostIcon, CommentsIcon, LikeActiveIcon } from "../../assets/icons";
 import CommentsForm from "./CommentsForm/CommentsForm";
@@ -16,8 +16,12 @@ import Linkify from 'react-linkify';
 import CommentsList from "./CommentsList/CommentsList";
 
 const CurrentTweet = () => {
-   const dispatch = useDispatch();
    const { tweet, error, isLoading } = useTypedSelector(state => state.currentTweet);
+
+   const [isLiked, setIsLiked] = useState<boolean>(tweet?.user.likes.includes(tweet._id) || false)
+   const [likesLength, setLikesLength] = useState<number>(tweet?.user.likes.length || 0);
+
+   const dispatch = useDispatch();
 
    const { username, id } = useParams<string>();
 
@@ -52,6 +56,24 @@ const CurrentTweet = () => {
          return document.documentElement.removeEventListener('click', closePopup);
       }
    }, [popup, closePopup]);
+
+   const handleLike = (e: React.MouseEvent) => {
+      if (!tweet) return;
+
+      e.preventDefault();
+
+      if (!isLiked) {
+         setIsLiked(true);
+         setLikesLength(likesLength + 1);
+
+         return dispatch(fetchCreateLike(tweet._id));
+      } else {
+         setIsLiked(false);
+         setLikesLength(likesLength - 1);
+
+         return dispatch(fetchDeleteLike(tweet._id));
+      }
+   }
 
    return (
       <>
@@ -105,28 +127,38 @@ const CurrentTweet = () => {
                         </div>
                         <div className="curr-tweet__stats tweet-row">
                            <div className="curr-tweet__count">
-                              Likes:<span>21</span>
+                              Likes:<span>{likesLength}</span>
                            </div>
                            <div className="curr-tweet__count">
                               Retweets:<span>5</span>
                            </div>
                         </div>
                         <div className="curr-tweet__options tweet-row">
-                           <div className="curr-tweet__icon def-icon">
-                              <CommentsIcon className="curr-tweet-i" />
+                           <div className="curr-tweet__activity tweet-activity">
+                              <div className="tweet-activity__icon def-icon">
+                                 <CommentsIcon className="curr-tweet-i" />
+                              </div>
                            </div>
-                           <div className="curr-tweet__icon rep-icon">
-                              <RepostIcon className="curr-tweet-i" />
+                           <div className="curr-tweet__activity tweet-activity">
+                              <div className="tweet-activity__icon rep-icon">
+                                 <RepostIcon className="curr-tweet-i" />
+                              </div>
                            </div>
-                           <div className="curr-tweet__icon like-icon">
-                              <LikeIcon className="curr-tweet-i" />
+                           <div className="curr-tweet__activity tweet-activity">
+                              <div className="tweet-activity__icon like-icon" onClick={handleLike}>
+                                 {isLiked
+                                    ? <LikeActiveIcon className="curr-tweet-i liked" />
+                                    : <LikeIcon className="curr-tweet-i" />}
+                              </div>
                            </div>
-                           <div className="curr-tweet__icon def-icon">
-                              <ShareIcon className="curr-tweet-i" />
+                           <div className="curr-tweet__activity tweet-activity">
+                              <div className="tweet-activity__icon def-icon">
+                                 <ShareIcon className="curr-tweet-i" />
+                              </div>
                            </div>
                         </div>
                      </div>
-                     <CommentsForm user={tweet.user} />
+                     <CommentsForm user={tweet.user} tweetId={tweet._id} />
                      <div className="curr-tweet__comments">
                         {tweet.comments
                            && <CommentsList comments={tweet.comments} />}

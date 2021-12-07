@@ -4,7 +4,7 @@ import { FiUpload as Share, FiRepeat as Repost } from 'react-icons/fi';
 import { AiOutlineFileGif as Gif, AiOutlineClose as Times } from 'react-icons/ai';
 import {
    BsCardImage as Image, BsEmojiSmile as Smile, BsLink45Deg as Link, BsGeoAlt as Location,
-   BsFillReplyAllFill as Reply
+   BsFillReplyAllFill as Reply, BsCameraFill as Camera
 } from 'react-icons/bs';
 import { GrTwitter as Twitter } from 'react-icons/gr';
 import { IoMdAlert as Alert } from 'react-icons/io';
@@ -29,3 +29,4 @@ export const CalendarIcon = Calendar;
 export const LocationIcon = Location;
 export const LinkIcon = Link;
 export const ReplyIcon = Reply;
+export const CameraIcon = Camera;

@@ -15,9 +15,6 @@ export const setMedia = (items: ITweet[]): ActionTypes => (
    { type: Actions.SET_MEDIA, payload: items }
 )
 
-export const deleteComment = (id: string): ActionTypes => (
-   { type: Actions.DELETE_COMMENT, payload: id }
-)
 
 export const setIsLoading = (): ActionTypes => (
    { type: Actions.SET_IS_LOADING }
@@ -48,18 +45,6 @@ export const getMedia = () => {
          const res = await TweetsService.fetchMediaTweets();
 
          dispatch(setMedia(res));
-      } catch (err: any) {
-         dispatch(setError(err))
-      }
-   }
-}
-
-export const fetchDeleteComment = (id: string) => {
-   return async (dispatch: Dispatch<ActionTypes>) => {
-      try {
-         await TweetsService.fetchMediaTweets();
-
-         dispatch(deleteComment(id));
       } catch (err: any) {
          dispatch(setError(err))
       }

@@ -2,15 +2,18 @@ import React, { useEffect } from "react";
 import './CommentPopup.scss';
 import { IoTrashOutline as Trash } from 'react-icons/io5';
 import { MdOutlineEdit as Edit } from 'react-icons/md';
+import { fetchDeleteComment } from "../../../store/actions/currentTweet";
+import { useDispatch } from "react-redux";
 
 interface ICommentPopup {
    id: string
 }
 
 const CommentPopup: React.FC<ICommentPopup> = ({ id }) => {
+   const dispatch = useDispatch();
 
    const handleDelete = () => {
-      console.log(id);
+      dispatch(fetchDeleteComment(id))
    }
 
    return (

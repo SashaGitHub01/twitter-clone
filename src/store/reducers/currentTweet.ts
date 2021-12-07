@@ -28,6 +28,54 @@ const currentTweetReducer = (state = initialState, action: ActionTypes) => {
             isLoading: true
          }
 
+      case Actions.DELETE_COMMENT:
+         if (!state.tweet) return state
+
+         return {
+            ...state,
+            tweet: {
+               ...state.tweet,
+               comments: state.tweet.comments.filter(({ _id }) => {
+                  return _id !== action.payload
+               })
+            }
+         }
+
+      case Actions.CREATE_COMMENT:
+         if (!state.tweet) return state
+
+         return {
+            ...state,
+            tweet: {
+               ...state.tweet,
+               comments: [...state.tweet.comments, action.payload]
+            }
+         }
+
+      case Actions.CREATE_LIKE:
+         if (!state.tweet) return state
+
+         return {
+            ...state,
+            tweet: {
+               ...state.tweet,
+               likes: [...state.tweet.likes, action.payload]
+            }
+         }
+
+      case Actions.DELETE_LIKE:
+         if (!state.tweet) return state
+
+         return {
+            ...state,
+            tweet: {
+               ...state.tweet,
+               likes: state.tweet.likes.filter((like) => {
+                  return like !== action.payload
+               })
+            }
+         }
+
       default:
          return state;
    }

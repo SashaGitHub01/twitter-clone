@@ -6,6 +6,7 @@ export interface ITweet {
    _id: string,
    createdAt: string,
    user: IUser,
+   likes: string[],
    images?: string[],
-   comments?: IComment[],
+   comments: IComment[],
 }

@@ -5,6 +5,7 @@ export interface IUser {
    username: string,
    email: string,
    _id: string,
+   likes: string[],
    createdAt: string
    avatar_url?: string,
    confirmed?: boolean,

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { IImage } from "../types/IImage";
+import { IUser } from "../types/IUser";
 import { IResponse } from "./types/response";
 
 class UploadService {
@@ -11,6 +12,19 @@ class UploadService {
       })
 
       const res = await axios.post<IResponse<string[]>>('/upload', formData, {
+         headers: {
+            "Content-Type": 'multipart/form-data'
+         }
+      });
+
+      return res.data.data;
+   }
+
+   static uploadAvatar = async (data: IImage): Promise<IUser> => {
+      const formData = new FormData();
+      formData.append('avatar', data.file)
+
+      const res = await axios.post<IResponse<IUser>>('/upload/avatar', formData, {
          headers: {
             "Content-Type": 'multipart/form-data'
          }

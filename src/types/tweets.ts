@@ -6,7 +6,9 @@ export enum Actions {
    SET_ERROR = 'tweets/SET_ERROR',
    DELETE_ITEM = 'tweets/DELETE_ITEM',
    ADD_ITEM = 'tweets/ADD_ITEM',
-   SET_FORM_ERROR = 'tweets/SET_FORM_ERROR'
+   SET_FORM_ERROR = 'tweets/SET_FORM_ERROR',
+   CREATE_LIKE = 'tweets/CREATE_LIKE',
+   DELETE_LIKE = 'tweets/DELETE_LIKE'
 }
 
 export interface IState {
