@@ -23,6 +23,17 @@ const currentProfileReducer = (state = initialState, action: ActionTypes) => {
             isLoading: false
          }
 
+      case Actions.EDIT_AVATAR:
+         if (!state.profile) return state;
+
+         return {
+            ...state,
+            profile: {
+               ...state.profile,
+               avatar_url: action.payload
+            }
+         }
+
       case Actions.SET_ERROR:
          return {
             ...state,

@@ -20,9 +20,9 @@ class UploadService {
       return res.data.data;
    }
 
-   static uploadAvatar = async (data: IImage): Promise<IUser> => {
+   static uploadAvatar = async (file: File): Promise<string> => {
       const formData = new FormData();
-      formData.append('avatar', data.file)
+      formData.append('avatar', file)
 
       const res = await axios.post<IResponse<IUser>>('/upload/avatar', formData, {
          headers: {
@@ -30,7 +30,7 @@ class UploadService {
          }
       });
 
-      return res.data.data;
+      return res.data.data.avatar_url;
    }
 }
 

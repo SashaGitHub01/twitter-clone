@@ -1,5 +1,6 @@
 import { Dispatch } from "react";
 import TweetsService from "../../API/TweetsService";
+import UploadService from "../../API/UploadService";
 import UsersService from "../../API/UsersService";
 import { Actions, ActionTypes } from "../../types/currentProfile";
 import { ITweet } from "../../types/ITweet";
@@ -15,6 +16,9 @@ export const setMedia = (items: ITweet[]): ActionTypes => (
    { type: Actions.SET_MEDIA, payload: items }
 )
 
+export const editAvatar = (avatar: string): ActionTypes => (
+   { type: Actions.EDIT_AVATAR, payload: avatar }
+)
 
 export const setIsLoading = (): ActionTypes => (
    { type: Actions.SET_IS_LOADING }
@@ -47,6 +51,18 @@ export const getMedia = () => {
          dispatch(setMedia(res));
       } catch (err: any) {
          dispatch(setError(err))
+      }
+   }
+}
+
+export const changeProfileAvatar = (file: File) => {
+   return async (dispatch: Dispatch<ActionTypes>) => {
+      try {
+         const res = await UploadService.uploadAvatar(file);
+
+         dispatch(editAvatar(res));
+      } catch (err: any) {
+         console.log(err)
       }
    }
 }

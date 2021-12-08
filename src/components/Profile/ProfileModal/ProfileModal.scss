@@ -9,17 +9,18 @@
    &__avatar {
       position: relative;
       width: 150px;
+      height: 150px;
       border-radius: 50%;
       overflow: hidden;
 
       &:hover {
-         & div {
+         & .avatar-layout {
             opacity: 1;
          }
       }
 
-      & div {
-         opacity: 0.2;
+      & .avatar-layout {
+         opacity: 0.25;
          position: absolute;
          bottom: 0;
          left: 50%;
@@ -28,7 +29,7 @@
          display: flex;
          flex-direction: column;
          align-items: center;
-         background-color: rgba(255, 255, 255, 0.6);
+         background-color: rgba(255, 255, 255, 0.8);
          padding: 0.5rem 0;
          cursor: pointer;
 
@@ -36,18 +37,44 @@
             font-size: 1.3rem;
             line-height: 1.8rem;
             color: $secondary;
+            font-weight: 500;
          }
 
          & .profile-cam-icon {
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: $grey;
          }
       }
-      & img {
+      & .edit-img {
+         background-position: center;
+         background-size: cover;
          cursor: pointer;
-         max-width: 100%;
+         height: 100%;
+         background-repeat: no-repeat;
+         width: 100%;
          display: block;
          border-radius: 50%;
+      }
+   }
+
+   &__submit {
+      padding: 2rem 0 0 0;
+      & .submit-btn {
+         min-height: 32px;
+         border-radius: 5000px;
+         background-color: $primary;
+         color: #fff;
+         font-size: 1.6rem;
+         font-weight: bold;
+         padding: 0 1.6rem;
+         &:disabled {
+            background-color: $primary_disabled;
+            pointer-events: none;
+         }
+
+         &:hover {
+            background-color: $primary_dark;
+         }
       }
    }
 }

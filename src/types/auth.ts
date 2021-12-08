@@ -7,7 +7,10 @@ export enum Actions {
    SET_SIGNIN_ERROR = 'auth/SET_SIGNIN_ERROR',
    SET_SIGNUP_ERROR = 'auth/SET_SIGNUP_ERROR',
    CLOSE_MODAL = 'auth/CLOSE_MODAL',
-   REMOVE_USER = 'auth/REMOVE_USER'
+   REMOVE_USER = 'auth/REMOVE_USER',
+   ADD_LIKE = 'auth/ADD_LIKE',
+   DELETE_LIKE = 'auth/DELETE_LIKE',
+   EDIT_AVATAR = 'auth/EDIT_AVATAR',
 }
 
 export interface IState {
@@ -22,6 +25,21 @@ export interface IState {
 export interface setUser {
    type: Actions.SET_USER,
    payload: IUser
+}
+
+export interface addLike {
+   type: Actions.ADD_LIKE,
+   payload: string
+}
+
+export interface editAvatar {
+   type: Actions.EDIT_AVATAR,
+   payload: string
+}
+
+export interface deleteLike {
+   type: Actions.DELETE_LIKE,
+   payload: string
 }
 
 export interface setError {
@@ -59,4 +77,6 @@ export type ActionTypes = setUser
    | setSignInError
    | setSignUpError
    | closeModal
-   | removeUser;
+   | removeUser
+   | addLike
+   | deleteLike;

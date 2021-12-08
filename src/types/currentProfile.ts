@@ -6,6 +6,7 @@ export enum Actions {
    SET_IS_LOADING = 'currentUser/SET_IS_LOADING',
    SET_ERROR = 'currentUser/SET_ERROR',
    SET_MEDIA = 'currentUser/SET_MEDIAS',
+   EDIT_AVATAR = 'currentUser/EDIT_AVATAR'
 
 }
 
@@ -20,6 +21,11 @@ export interface IState {
 export interface setProfile {
    type: Actions.SET_PROFILE,
    payload: IUser
+}
+
+export interface editAvatar {
+   type: Actions.EDIT_AVATAR,
+   payload: string
 }
 
 
@@ -40,4 +46,5 @@ export interface setIsLoading {
 export type ActionTypes = setProfile
    | setError
    | setIsLoading
-   | setMedia;
+   | setMedia
+   | editAvatar;

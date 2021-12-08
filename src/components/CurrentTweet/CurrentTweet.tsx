@@ -17,13 +17,23 @@ import CommentsList from "./CommentsList/CommentsList";
 
 const CurrentTweet = () => {
    const { tweet, error, isLoading } = useTypedSelector(state => state.currentTweet);
+   const me = useTypedSelector(state => state.auth.user);
 
-   const [isLiked, setIsLiked] = useState<boolean>(tweet?.user.likes.includes(tweet._id) || false)
-   const [likesLength, setLikesLength] = useState<number>(tweet?.user.likes.length || 0);
+   const [inProgress, setInProgress] = useState(false);
+   const [isLiked, setIsLiked] = useState<boolean>(false);
+   const [likesLength, setLikesLength] = useState<number>(0);
 
    const dispatch = useDispatch();
 
    const { username, id } = useParams<string>();
+
+   useEffect(() => {
+      if (tweet) setLikesLength(tweet.likes.length);
+   }, [tweet]);
+
+   useEffect(() => {
+      if (me && tweet) setIsLiked(me.likes.includes(tweet._id));
+   }, [tweet, me]);
 
    useEffect(() => {
       if (id) dispatch(getTweet(id));
@@ -57,21 +67,27 @@ const CurrentTweet = () => {
       }
    }, [popup, closePopup]);
 
-   const handleLike = (e: React.MouseEvent) => {
+   const handleLike = async (e: React.MouseEvent) => {
       if (!tweet) return;
 
       e.preventDefault();
-
+      console.log(isLiked);
       if (!isLiked) {
+         setInProgress(true);
+
+         await dispatch(fetchCreateLike(tweet._id));
+
          setIsLiked(true);
-         setLikesLength(likesLength + 1);
-
-         return dispatch(fetchCreateLike(tweet._id));
+         setInProgress(false);
+         return setLikesLength(likesLength + 1);
       } else {
-         setIsLiked(false);
-         setLikesLength(likesLength - 1);
+         setInProgress(true);
 
-         return dispatch(fetchDeleteLike(tweet._id));
+         await dispatch(fetchDeleteLike(tweet._id));
+
+         setIsLiked(false);
+         setInProgress(false);
+         return setLikesLength(likesLength - 1);
       }
    }
 
@@ -86,7 +102,10 @@ const CurrentTweet = () => {
                ? <div className="not-found">Твит не найден!</div>
                : <>
                   <div className="curr-tweet">
-                     <div className="curr-tweet__wrapper">
+                     <div className={inProgress
+                        ? "curr-tweet__wrapper progress"
+                        : "curr-tweet__wrapper"}
+                     >
                         <div className="curr-tweet__head">
                            <div className="curr-tweet__user-i user-i">
                               <div className="user-i__avatar">

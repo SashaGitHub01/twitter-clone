@@ -11,15 +11,18 @@ import { ITweet } from "../../../types/ITweet";
 import ImagesList from "../../ImagesList/ImagesList";
 import { useDispatch } from "react-redux";
 import { fetchCreateLike, fetchDeleteLike } from "../../../store/actions/currentTweet";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
 
 interface ITweetProps {
    item: ITweet
 }
 
 const Tweet: React.FC<ITweetProps> = ({ item: { _id, user, text, createdAt, images, comments, likes } }) => {
+   const me = useTypedSelector(state => state.auth.user);
+
    const [popup, setPopup] = useState<boolean>(false);
-   const [isLiked, setIsLiked] = useState<boolean>(user.likes.includes(_id))
-   const [likesLength, setLikesLength] = useState<number>(user.likes.length);
+   const [isLiked, setIsLiked] = useState<boolean>(me?.likes.includes(_id) || false)
+   const [likesLength, setLikesLength] = useState<number>(likes.length);
 
    const dispatch = useDispatch();
 

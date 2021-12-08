@@ -56,7 +56,8 @@ const Profile: React.FC = () => {
          <ContentTitle>@{userPath}</ContentTitle>
          {profile
             ? <div className="profile">
-               <ProfileModal handleClose={handleClose} user={profile} />
+               {modal
+                  && <ProfileModal handleClose={handleClose} user={profile} />}
                <div className="profile__col">
                   <div className="profile__head pr-head">
                      <div className="pr-head__background">
@@ -67,7 +68,7 @@ const Profile: React.FC = () => {
                      <div className="pr-head__row">
                         <div className="pr-head__button">
                            {isOwner
-                              ? <div className="edit-btn">
+                              ? <div className="edit-btn" onClick={handleOpen}>
                                  Редактировать
                               </div>
                               : <div className="follow-btn">

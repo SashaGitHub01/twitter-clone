@@ -8,6 +8,14 @@ export const setUser = (user: IUser): ActionTypes => (
    { type: Actions.SET_USER, payload: user }
 )
 
+export const authAddLike = (id: string): ActionTypes => (
+   { type: Actions.ADD_LIKE, payload: id }
+)
+
+export const authDeleteLike = (id: string): ActionTypes => (
+   { type: Actions.DELETE_LIKE, payload: id }
+)
+
 export const closeModal = (): ActionTypes => (
    { type: Actions.CLOSE_MODAL }
 )

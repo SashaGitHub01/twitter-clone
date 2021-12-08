@@ -48,6 +48,30 @@ const authReducer = (state = initialState, action: ActionTypes) => {
             isLoading: action.payload
          }
 
+      case Actions.ADD_LIKE:
+         if (!state.user) return state;
+
+         return {
+            ...state,
+            user: {
+               ...state.user,
+               likes: [...state.user.likes, action.payload]
+            }
+         }
+
+      case Actions.DELETE_LIKE:
+         if (!state.user) return state;
+
+         return {
+            ...state,
+            user: {
+               ...state.user,
+               likes: state.user.likes.filter((id) => {
+                  return id !== action.payload
+               })
+            }
+         }
+
       case Actions.SET_ERROR:
          return {
             ...state,

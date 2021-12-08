@@ -3,9 +3,11 @@ import CommentsService from "../../API/CommentsService";
 import { LikesService } from "../../API/LikesService";
 import TweetsService from "../../API/TweetsService";
 import { Actions, ActionTypes } from "../../types/currentTweet";
+import { ActionTypes as AuthActionTypes } from "../../types/auth";
 import { IComment } from "../../types/IComment";
 import { ICommentBody } from "../../types/ICommentBody";
 import { ITweet } from "../../types/ITweet";
+import { authAddLike, authDeleteLike } from "./authActions";
 
 
 //ACTIONS
@@ -77,11 +79,12 @@ export const fetchDeleteComment = (id: string) => {
 }
 
 export const fetchCreateLike = (id: string) => {
-   return async (dispatch: Dispatch<ActionTypes>) => {
+   return async (dispatch: Dispatch<ActionTypes | AuthActionTypes>) => {
       try {
-         await LikesService.createLike(id);
-
          dispatch(createLike(id));
+         dispatch(authAddLike(id))
+
+         await LikesService.createLike(id);
       } catch (err: any) {
          console.log(err)
       }
@@ -89,9 +92,10 @@ export const fetchCreateLike = (id: string) => {
 }
 
 export const fetchDeleteLike = (id: string) => {
-   return async (dispatch: Dispatch<ActionTypes>) => {
+   return async (dispatch: Dispatch<ActionTypes | AuthActionTypes>) => {
       try {
          dispatch(deleteLike(id));
+         dispatch(authDeleteLike(id));
 
          await LikesService.deleteLike(id);
       } catch (err: any) {
