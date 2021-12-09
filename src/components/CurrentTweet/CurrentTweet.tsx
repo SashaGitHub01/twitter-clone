@@ -14,6 +14,7 @@ import { createDateString } from "../../utils/createDateString";
 import ImagesList from "../ImagesList/ImagesList";
 import Linkify from 'react-linkify';
 import CommentsList from "./CommentsList/CommentsList";
+import ErrorPage from "../../pages/ErrorPage/ErrorPage";
 
 const CurrentTweet = () => {
    const { tweet, error, isLoading } = useTypedSelector(state => state.currentTweet);
@@ -99,7 +100,7 @@ const CurrentTweet = () => {
          {isLoading
             ? <Loader />
             : error || !tweet
-               ? <div className="not-found">Твит не найден!</div>
+               ? <ErrorPage />
                : <>
                   <div className="curr-tweet">
                      <div className={inProgress
@@ -177,7 +178,12 @@ const CurrentTweet = () => {
                            </div>
                         </div>
                      </div>
-                     <CommentsForm user={tweet.user} tweetId={tweet._id} />
+                     {me
+                        && <CommentsForm
+                           user={tweet.user}
+                           tweetId={tweet._id}
+                           me={me}
+                        />}
                      <div className="curr-tweet__comments">
                         {tweet.comments
                            && <CommentsList comments={tweet.comments} />}

@@ -6,8 +6,8 @@ export enum Actions {
    SET_IS_LOADING = 'currentUser/SET_IS_LOADING',
    SET_ERROR = 'currentUser/SET_ERROR',
    SET_MEDIA = 'currentUser/SET_MEDIAS',
-   EDIT_AVATAR = 'currentUser/EDIT_AVATAR'
-
+   EDIT_AVATAR = 'currentUser/EDIT_AVATAR',
+   SET_LIKED = 'currentUser/SET_LIKED'
 }
 
 
@@ -15,6 +15,7 @@ export interface IState {
    profile: IUser | null,
    error: string,
    media?: ITweet[],
+   liked?: ITweet[],
    isLoading: boolean
 }
 
@@ -34,6 +35,11 @@ export interface setMedia {
    payload: ITweet[]
 }
 
+export interface setLiked {
+   type: Actions.SET_LIKED,
+   payload: ITweet[]
+}
+
 export interface setError {
    type: Actions.SET_ERROR,
    payload: string
@@ -47,4 +53,5 @@ export type ActionTypes = setProfile
    | setError
    | setIsLoading
    | setMedia
-   | editAvatar;
+   | editAvatar
+   | setLiked;

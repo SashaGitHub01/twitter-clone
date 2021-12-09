@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { IUser } from "../../../types/IUser";
 import Modal from "../../../UI/Modal/Modal";
 import './ProfileModal.scss';
@@ -10,12 +10,13 @@ import { changeProfileAvatar } from "../../../store/actions/currentProfile";
 
 interface IProfileModalProps {
    handleClose: () => void,
+   setAvatar: Dispatch<SetStateAction<string>>,
+   avatar: string,
    user: IUser
 }
 
-const ProfileModal: React.FC<IProfileModalProps> = ({ handleClose, user }) => {
+const ProfileModal: React.FC<IProfileModalProps> = ({ handleClose, user, avatar, setAvatar }) => {
    const dispatch = useDispatch();
-   const [avatar, setAvatar] = useState<string>(user.avatar_url);
    const [file, setFile] = useState<File | null>(null);
 
    const formik = useFormik({

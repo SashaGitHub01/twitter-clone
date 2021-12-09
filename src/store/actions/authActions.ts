@@ -1,5 +1,6 @@
 import { Dispatch } from "react";
 import AuthService from "../../API/AuthService";
+import { FollowService } from "../../API/FollowService";
 import { Actions, ActionTypes } from "../../types/auth";
 import { ISignIn, ISignUp } from "../../types/AuthTypes";
 import { IUser } from "../../types/IUser";
@@ -14,6 +15,14 @@ export const authAddLike = (id: string): ActionTypes => (
 
 export const authDeleteLike = (id: string): ActionTypes => (
    { type: Actions.DELETE_LIKE, payload: id }
+)
+
+export const followUser = (id: string): ActionTypes => (
+   { type: Actions.FOLLOW, payload: id }
+)
+
+export const unfollowUser = (id: string): ActionTypes => (
+   { type: Actions.UNFOLLOW, payload: id }
 )
 
 export const closeModal = (): ActionTypes => (
@@ -102,6 +111,32 @@ export const logout = () => {
          await AuthService.logout();
       } catch (err) {
          dispatch(setSignUpError(err));
+      }
+   }
+}
+
+export const fetchFollow = (id: string) => {
+   return async (dispatch: Dispatch<ActionTypes>) => {
+      try {
+         await FollowService.follow(id)
+
+         dispatch(followUser(id));
+
+      } catch (err) {
+         console.log(err)
+      }
+   }
+}
+
+export const fetchUnfollow = (id: string) => {
+   return async (dispatch: Dispatch<ActionTypes>) => {
+      try {
+         await FollowService.unfollow(id)
+
+         dispatch(unfollowUser(id));
+
+      } catch (err) {
+         console.log(err)
       }
    }
 }

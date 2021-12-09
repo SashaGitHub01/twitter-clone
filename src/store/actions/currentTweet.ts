@@ -81,10 +81,10 @@ export const fetchDeleteComment = (id: string) => {
 export const fetchCreateLike = (id: string) => {
    return async (dispatch: Dispatch<ActionTypes | AuthActionTypes>) => {
       try {
+         await LikesService.createLike(id);
+
          dispatch(createLike(id));
          dispatch(authAddLike(id))
-
-         await LikesService.createLike(id);
       } catch (err: any) {
          console.log(err)
       }
@@ -94,10 +94,10 @@ export const fetchCreateLike = (id: string) => {
 export const fetchDeleteLike = (id: string) => {
    return async (dispatch: Dispatch<ActionTypes | AuthActionTypes>) => {
       try {
+         await LikesService.deleteLike(id);
+
          dispatch(deleteLike(id));
          dispatch(authDeleteLike(id));
-
-         await LikesService.deleteLike(id);
       } catch (err: any) {
          console.log(err)
       }

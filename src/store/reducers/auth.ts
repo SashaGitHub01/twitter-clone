@@ -59,6 +59,30 @@ const authReducer = (state = initialState, action: ActionTypes) => {
             }
          }
 
+      case Actions.FOLLOW:
+         if (!state.user) return state;
+
+         return {
+            ...state,
+            user: {
+               ...state.user,
+               following: [...state.user.following, action.payload]
+            }
+         }
+
+      case Actions.UNFOLLOW:
+         if (!state.user) return state;
+
+         return {
+            ...state,
+            user: {
+               ...state.user,
+               following: state.user.following.filter((id) => {
+                  return id !== action.payload
+               })
+            }
+         }
+
       case Actions.DELETE_LIKE:
          if (!state.user) return state;
 

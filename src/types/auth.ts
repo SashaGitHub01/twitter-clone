@@ -11,6 +11,8 @@ export enum Actions {
    ADD_LIKE = 'auth/ADD_LIKE',
    DELETE_LIKE = 'auth/DELETE_LIKE',
    EDIT_AVATAR = 'auth/EDIT_AVATAR',
+   FOLLOW = 'auth/FOLLOW',
+   UNFOLLOW = 'auth/UNFOLLOW'
 }
 
 export interface IState {
@@ -29,6 +31,16 @@ export interface setUser {
 
 export interface addLike {
    type: Actions.ADD_LIKE,
+   payload: string
+}
+
+export interface follow {
+   type: Actions.FOLLOW,
+   payload: string
+}
+
+export interface unfollow {
+   type: Actions.UNFOLLOW,
    payload: string
 }
 
@@ -79,4 +91,6 @@ export type ActionTypes = setUser
    | closeModal
    | removeUser
    | addLike
-   | deleteLike;
+   | deleteLike
+   | follow
+   | unfollow;

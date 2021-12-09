@@ -16,6 +16,11 @@ export const setMedia = (items: ITweet[]): ActionTypes => (
    { type: Actions.SET_MEDIA, payload: items }
 )
 
+export const setLikes = (items: ITweet[]): ActionTypes => (
+   { type: Actions.SET_LIKED, payload: items }
+)
+
+
 export const editAvatar = (avatar: string): ActionTypes => (
    { type: Actions.EDIT_AVATAR, payload: avatar }
 )
@@ -43,12 +48,24 @@ export const getProfile = (username: string) => {
    }
 }
 
-export const getMedia = () => {
+export const getMedia = (id: string) => {
    return async (dispatch: Dispatch<ActionTypes>) => {
       try {
-         const res = await TweetsService.fetchMediaTweets();
+         const res = await TweetsService.fetchMediaTweets(id);
 
          dispatch(setMedia(res));
+      } catch (err: any) {
+         dispatch(setError(err))
+      }
+   }
+}
+
+export const getLikes = (id: string) => {
+   return async (dispatch: Dispatch<ActionTypes>) => {
+      try {
+         const res = await TweetsService.fetchLikesTweets(id);
+
+         dispatch(setLikes(res));
       } catch (err: any) {
          dispatch(setError(err))
       }

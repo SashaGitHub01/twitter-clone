@@ -1,22 +1,22 @@
 import React, { useEffect } from "react";
 import Tweet from "../../Tweets/Tweet/Tweet";
-import './ProfileMedia.scss';
+import './ProfileLikes.scss';
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { useDispatch } from "react-redux";
-import { getMedia } from "../../../store/actions/currentProfile";
+import { getLikes } from "../../../store/actions/currentProfile";
 import { IUser } from "../../../types/IUser";
 
-interface IProfileMediaProps {
+interface IProfileLikesProps {
    profile: IUser
 }
 
-const ProfileMedia: React.FC<IProfileMediaProps> = ({ profile }) => {
+const ProfileLikes: React.FC<IProfileLikesProps> = ({ profile }) => {
    const dispatch = useDispatch();
 
-   const items = useTypedSelector(state => state.currentProfile.media);
+   const items = useTypedSelector(state => state.currentProfile.liked);
 
    useEffect(() => {
-      dispatch(getMedia(profile._id));
+      dispatch(getLikes(profile._id));
    }, []);
 
    return (
@@ -32,4 +32,4 @@ const ProfileMedia: React.FC<IProfileMediaProps> = ({ profile }) => {
    )
 }
 
-export default ProfileMedia;
+export default ProfileLikes;

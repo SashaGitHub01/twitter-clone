@@ -24,13 +24,13 @@ class UploadService {
       const formData = new FormData();
       formData.append('avatar', file)
 
-      const res = await axios.post<IResponse<IUser>>('/upload/avatar', formData, {
+      const res = await axios.post<IResponse<string>>('/upload/avatar', formData, {
          headers: {
             "Content-Type": 'multipart/form-data'
          }
       });
 
-      return res.data.data.avatar_url;
+      return res.data.data;
    }
 }
 

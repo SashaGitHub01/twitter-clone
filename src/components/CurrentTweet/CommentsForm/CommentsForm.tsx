@@ -9,10 +9,11 @@ import { fetchCreateComment } from "../../../store/actions/currentTweet";
 
 interface ICommentsFormProps {
    user: IUser,
+   me: IUser,
    tweetId: string
 }
 
-const CommentsForm: React.FC<ICommentsFormProps> = ({ user, tweetId }) => {
+const CommentsForm: React.FC<ICommentsFormProps> = ({ user, tweetId, me }) => {
    const dispatch = useDispatch();
 
    const validation = Yup.object().shape({
@@ -39,7 +40,7 @@ const CommentsForm: React.FC<ICommentsFormProps> = ({ user, tweetId }) => {
       <form className="reply-form" onSubmit={formik.handleSubmit}>
          <div className="reply-form__row">
             <div className="reply-form__avatar">
-               <img src={user.avatar_url} alt="ava" />
+               <img src={me.avatar_url} alt="ava" />
             </div>
             <div className="reply-form__body">
                <div className="reply-form__textarea">

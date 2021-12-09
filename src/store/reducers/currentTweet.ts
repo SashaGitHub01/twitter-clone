@@ -12,7 +12,8 @@ const currentTweetReducer = (state = initialState, action: ActionTypes) => {
          return {
             ...state,
             tweet: action.payload,
-            isLoading: false
+            isLoading: false,
+            error: '',
          }
 
       case Actions.SET_ERROR:
