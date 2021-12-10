@@ -8,8 +8,10 @@ import * as Yup from 'yup';
 import Modal from "../../UI/Modal/Modal";
 import InfoInput from "../../UI/InfoInput/InfoInput";
 import { useDispatch } from "react-redux";
-import { signIn, closeModal, signUp } from "../../store/actions/authActions";
-import { AlertIcon } from "../../assets/icons";
+import { signIn, closeModal, signUp, signInWithGoogle } from "../../store/actions/authActions";
+import { AlertIcon, GoogleIcon } from "../../assets/icons";
+
+const server = 'http://localhost:3001';
 
 interface ISignUpProps {
    isAuth: boolean,
@@ -44,6 +46,10 @@ const SignUp: React.FC<ISignUpProps> = ({ isAuth, signInError, signUpError, isLo
       dispatch(closeModal())
 
       setSignIn(false);
+   }
+
+   const handleSignWithGoogle = () => {
+      dispatch(signInWithGoogle());
    }
 
    useEffect(() => {
@@ -146,14 +152,23 @@ const SignUp: React.FC<ISignUpProps> = ({ isAuth, signInError, signUpError, isLo
                   <div className="signup-col-2__buttons">
                      <div
                         onClick={handleOpenUp}
-                        className="signup-col-2__button reg-btn">
+                        className="signup-col-2__button reg-btn"
+                     >
                         Зарегистрироваться
                      </div>
                      <div
                         onClick={handleOpenIn}
-                        className="signup-col-2__button signin-btn">
+                        className="signup-col-2__button signin-btn"
+                     >
                         Войти
                      </div>
+                     <a
+                        href={`${server}/auth/google`}
+                        className="signup-col-2__button signin-btn"
+                     >
+                        <GoogleIcon className="google-icon" />
+                        <span>Войти с Google</span>
+                     </a>
                   </div>
                </div>
             </div>

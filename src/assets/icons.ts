@@ -10,6 +10,7 @@ import { GrTwitter as Twitter } from 'react-icons/gr';
 import { IoMdAlert as Alert } from 'react-icons/io';
 import { RiLogoutBoxLine as Out } from 'react-icons/ri';
 import { FaRegCalendarAlt as Calendar } from 'react-icons/fa';
+import { FcGoogle as Google } from 'react-icons/fc';
 
 export const DotsIcon = Dots;
 export const CommentsIcon = Comments;
@@ -30,3 +31,4 @@ export const LocationIcon = Location;
 export const LinkIcon = Link;
 export const ReplyIcon = Reply;
 export const CameraIcon = Camera;
+export const GoogleIcon = Google;
