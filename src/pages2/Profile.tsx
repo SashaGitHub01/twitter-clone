@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from "react";
-import ContentTitle from "../ContentTitle/ContentTitle";
-import './Profile.scss';
-import { CalendarIcon, LinkIcon, LocationIcon } from "../../assets/icons";
-import { formatJoinDate } from "../../utils/formatJoinDate";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
+import ContentTitle from "../components/ContentTitle/ContentTitle";
+import '../styles/Profile.scss';
+import { CalendarIcon, LinkIcon, LocationIcon } from "../assets/icons";
+import { formatJoinDate } from "../utils/formatJoinDate";
+import { useTypedSelector } from "../hooks/useTypedSelector";
 import { Routes, Route, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { getProfile } from "../../store/actions/currentProfile";
-import Loader from "../Loader/Loader";
-import { useUserPath } from "../../hooks/useUserPath";
-import { useTabName } from "../../hooks/useTabName";
-import ProfileTweets from "./ProfileTweets/ProfileTweets";
-import ProfileMedia from "./ProfileMedia/ProfileMedia";
-import ProfileModal from "./ProfileModal/ProfileModal";
-import ProfileLikes from "./ProfileLikes/ProfileLikes";
-import { fetchFollow, fetchUnfollow } from "../../store/actions/authActions";
-import ErrorPage from "../../pages/ErrorPage/ErrorPage";
+import { getProfile } from "../store/actions/currentProfile";
+import Loader from "../components/Loader/Loader";
+import { useUserPath } from "../hooks/useUserPath";
+import { useTabName } from "../hooks/useTabName";
+import ProfileTweets from "../components/Profile/ProfileTweets/ProfileTweets";
+import ProfileMedia from "../components/Profile/ProfileMedia/ProfileMedia";
+import ProfileModal from "../components/Profile/ProfileModal/ProfileModal";
+import ProfileLikes from "../components/Profile/ProfileLikes/ProfileLikes";
+import { fetchFollow, fetchUnfollow } from "../store/actions/authActions";
+import ErrorPage from "./ErrorPage";
+import Layout from "../components/Layout/Layout";
 
 const tabs = [
    { name: 'Твиты', path: '', id: 1 },
@@ -90,7 +91,7 @@ const Profile: React.FC = () => {
    if (error) return <ErrorPage />
 
    return (
-      <>
+      <Layout>
          <ContentTitle>@{userPath}</ContentTitle>
          {isLoading
             ? <Loader />
@@ -206,7 +207,7 @@ const Profile: React.FC = () => {
                   </div>
                </div>
                : null}
-      </>
+      </Layout>
    )
 }
 

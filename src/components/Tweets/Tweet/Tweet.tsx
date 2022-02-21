@@ -10,7 +10,7 @@ import { formatDate } from "../../../utils/formatDate";
 import { ITweet } from "../../../types/ITweet";
 import ImagesList from "../../ImagesList/ImagesList";
 import { useDispatch } from "react-redux";
-import { fetchCreateLike, fetchDeleteLike } from "../../../store/actions/currentTweet";
+import { fetchCreateLike, fetchDeleteLike } from "../../../store/actions/tweetsActions";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 
 interface ITweetProps {
@@ -19,10 +19,11 @@ interface ITweetProps {
 
 const Tweet: React.FC<ITweetProps> = ({ item: { _id, user, text, createdAt, images, comments, likes } }) => {
    const me = useTypedSelector(state => state.auth.user);
+   const fetchingLike = useTypedSelector(state => state.tweets.isFetchingLike)
 
    const [popup, setPopup] = useState<boolean>(false);
-   const [isLiked, setIsLiked] = useState<boolean>(me?.likes.includes(_id) || false)
-   const [likesLength, setLikesLength] = useState<number>(likes.length);
+   const [isLiked, setIsLiked] = useState<boolean>(false)
+   const [likesLength, setLikesLength] = useState<number>(likes.length || 0);
 
    const dispatch = useDispatch();
 
@@ -36,7 +37,6 @@ const Tweet: React.FC<ITweetProps> = ({ item: { _id, user, text, createdAt, imag
 
    const openPopup = (e: React.MouseEvent<HTMLDivElement>) => {
       e.preventDefault();
-
       setPopup(true);
    }
 
@@ -45,9 +45,23 @@ const Tweet: React.FC<ITweetProps> = ({ item: { _id, user, text, createdAt, imag
    }
 
    useEffect(() => {
+      if (me?.likes.includes(_id)) {
+         setIsLiked(true)
+      } else {
+         setIsLiked(false)
+      }
+   }, [me, _id])
+
+   useEffect(() => {
+      if (likes) {
+         setLikesLength(likes.length)
+      }
+   }, [likes])
+
+
+   useEffect(() => {
       if (popup) {
          document.documentElement.addEventListener('click', closePopup);
-
          return;
       } else {
          return document.documentElement.removeEventListener('click', closePopup);
@@ -58,21 +72,14 @@ const Tweet: React.FC<ITweetProps> = ({ item: { _id, user, text, createdAt, imag
       e.preventDefault();
 
       if (!isLiked) {
-         setIsLiked(true);
-         setLikesLength(likesLength + 1);
-
          return dispatch(fetchCreateLike(_id));
       } else {
-         setIsLiked(false);
-         setLikesLength(likesLength - 1);
-
          return dispatch(fetchDeleteLike(_id));
       }
    }
 
    return (
-      <Link
-         to={`/${user.username}/status/${_id}`}
+      <div
          className="tweet"
       >
          <div className={popup ? "tweet__item disabled" : 'tweet__item'}>
@@ -105,10 +112,17 @@ const Tweet: React.FC<ITweetProps> = ({ item: { _id, user, text, createdAt, imag
                         className="dots-icon" />
                   </div>
                </div>
-               <div className="tweet__body">
-                  <pre>
-                     {text}
-                  </pre>
+               <Link
+                  className="tweet__body"
+                  to={`/${user.username}/status/${_id}`}
+               >
+                  <div
+                     className="tweet_content"
+                  >
+                     <pre>
+                        {text}
+                     </pre>
+                  </div>
                   {images && images.length > 0
                      && <ImagesList images={images} />
                   }
@@ -130,7 +144,7 @@ const Tweet: React.FC<ITweetProps> = ({ item: { _id, user, text, createdAt, imag
                         <span>142</span>
                      </div>
                      <div className="tweet-like">
-                        <button onClick={handleLike}>
+                        <button onClick={handleLike} disabled={fetchingLike}>
                            {isLiked
                               ? <LikeActiveIcon className="tweet-option-i liked" />
                               : <LikeIcon className="tweet-option-i" />}
@@ -145,10 +159,10 @@ const Tweet: React.FC<ITweetProps> = ({ item: { _id, user, text, createdAt, imag
                         </button>
                      </div>
                   </div>
-               </div>
+               </Link>
             </div>
          </div>
-      </Link>
+      </div>
    )
 }
 

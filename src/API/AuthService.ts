@@ -15,16 +15,6 @@ class AuthService {
       return res.data.data;
    }
 
-   static withGoogle = async (): Promise<IUser | null> => {
-      const res = await axios.get<IAuthResponse>('/auth/google', {
-         headers: {
-            'Access-Control-Allow-Origin': 'http://localhost:3000'
-         }
-      });
-
-      return res.data.data;
-   }
-
    static signUp = async (data: ISignUp): Promise<IUser | null> => {
       const res = await axios.post<IAuthResponse>('/auth/register', data, {
          withCredentials: true

@@ -1,25 +1,28 @@
 import React, { useEffect, useRef, useState } from "react";
-import './CurrentTweet.scss';
+import '../styles/CurrentTweet.scss';
 import { useDispatch } from "react-redux";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { useTypedSelector } from "../hooks/useTypedSelector";
 import { useParams } from "react-router-dom";
-import ContentTitle from "../ContentTitle/ContentTitle";
-import { DotsIcon } from "../../assets/icons";
-import { fetchCreateLike, fetchDeleteLike, getTweet } from "../../store/actions/currentTweet";
-import Loader from "../Loader/Loader";
-import { LikeIcon, ShareIcon, RepostIcon, CommentsIcon, LikeActiveIcon } from "../../assets/icons";
-import CommentsForm from "./CommentsForm/CommentsForm";
-import TweetPopup from "../Tweets/TweetPopup/TweetPopup";
-import { createDateString } from "../../utils/createDateString";
-import ImagesList from "../ImagesList/ImagesList";
+import ContentTitle from "../components/ContentTitle/ContentTitle";
+import { DotsIcon } from "../assets/icons";
+import { fetchCreateLike, fetchDeleteLike, getTweet } from "../store/actions/currentTweet";
+import Loader from "../components/Loader/Loader";
+import { LikeIcon, ShareIcon, RepostIcon, CommentsIcon, LikeActiveIcon } from "../assets/icons";
+import CommentsForm from "../components/CurrentTweet/CommentsForm/CommentsForm";
+import TweetPopup from "../components/Tweets/TweetPopup/TweetPopup";
+import { createDateString } from "../utils/createDateString";
+import ImagesList from "../components/ImagesList/ImagesList";
 import Linkify from 'react-linkify';
-import CommentsList from "./CommentsList/CommentsList";
-import ErrorPage from "../../pages/ErrorPage/ErrorPage";
+import CommentsList from "../components/CurrentTweet/CommentsList/CommentsList";
+import ErrorPage from "./ErrorPage";
+import Layout from "../components/Layout/Layout";
 
 const CurrentTweet = () => {
-   const { tweet, error, isLoading } = useTypedSelector(state => state.currentTweet);
+   const { tweet, error, isLoading, isFetchingLike } = useTypedSelector(state => state.currentTweet);
    const me = useTypedSelector(state => state.auth.user);
+   const ref = useRef<HTMLDivElement>(null);
 
+   const [popup, setPopup] = useState<boolean>(false);
    const [inProgress, setInProgress] = useState(false);
    const [isLiked, setIsLiked] = useState<boolean>(false);
    const [likesLength, setLikesLength] = useState<number>(0);
@@ -40,9 +43,6 @@ const CurrentTweet = () => {
       if (id) dispatch(getTweet(id));
    }, [id, dispatch]);
 
-   const [popup, setPopup] = useState<boolean>(false);
-
-   const ref = useRef<HTMLDivElement>(null);
 
    const checkClick = (e: Event) => {
       if (popup && ref.current && !ref.current.contains(e.target as Node)) {
@@ -70,30 +70,23 @@ const CurrentTweet = () => {
 
    const handleLike = async (e: React.MouseEvent) => {
       if (!tweet) return;
-
       e.preventDefault();
-      console.log(isLiked);
+
       if (!isLiked) {
          setInProgress(true);
-
          await dispatch(fetchCreateLike(tweet._id));
-
-         setIsLiked(true);
          setInProgress(false);
          return setLikesLength(likesLength + 1);
       } else {
          setInProgress(true);
-
          await dispatch(fetchDeleteLike(tweet._id));
-
-         setIsLiked(false);
          setInProgress(false);
          return setLikesLength(likesLength - 1);
       }
    }
 
    return (
-      <>
+      <Layout>
          <ContentTitle>
             @{username}
          </ContentTitle>
@@ -165,11 +158,15 @@ const CurrentTweet = () => {
                               </div>
                            </div>
                            <div className="curr-tweet__activity tweet-activity">
-                              <div className="tweet-activity__icon like-icon" onClick={handleLike}>
+                              <button
+                                 className="tweet-activity__icon like-icon"
+                                 onClick={handleLike}
+                                 disabled={isFetchingLike}
+                              >
                                  {isLiked
                                     ? <LikeActiveIcon className="curr-tweet-i liked" />
                                     : <LikeIcon className="curr-tweet-i" />}
-                              </div>
+                              </button>
                            </div>
                            <div className="curr-tweet__activity tweet-activity">
                               <div className="tweet-activity__icon def-icon">
@@ -190,7 +187,7 @@ const CurrentTweet = () => {
                      </div>
                   </div>
                </>}
-      </>
+      </Layout>
    )
 }
 

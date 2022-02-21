@@ -31,6 +31,10 @@ export const deleteLike = (id: string): ActionTypes => (
    { type: Actions.DELETE_LIKE, payload: id }
 )
 
+export const setIsFetchingLike = (): ActionTypes => (
+   { type: Actions.FETCH_LIKE }
+)
+
 export const setIsLoading = (): ActionTypes => (
    { type: Actions.SET_IS_LOADING }
 )
@@ -81,9 +85,11 @@ export const fetchDeleteComment = (id: string) => {
 export const fetchCreateLike = (id: string) => {
    return async (dispatch: Dispatch<ActionTypes | AuthActionTypes>) => {
       try {
-         await LikesService.createLike(id);
+         dispatch(setIsFetchingLike())
 
-         dispatch(createLike(id));
+         const res = await LikesService.like(id);
+
+         dispatch(createLike(res));
          dispatch(authAddLike(id))
       } catch (err: any) {
          console.log(err)
@@ -94,9 +100,11 @@ export const fetchCreateLike = (id: string) => {
 export const fetchDeleteLike = (id: string) => {
    return async (dispatch: Dispatch<ActionTypes | AuthActionTypes>) => {
       try {
-         await LikesService.deleteLike(id);
+         dispatch(setIsFetchingLike())
 
-         dispatch(deleteLike(id));
+         const res = await LikesService.like(id);
+
+         dispatch(deleteLike(res));
          dispatch(authDeleteLike(id));
       } catch (err: any) {
          console.log(err)

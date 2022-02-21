@@ -8,14 +8,16 @@ export enum Actions {
    ADD_ITEM = 'tweets/ADD_ITEM',
    SET_FORM_ERROR = 'tweets/SET_FORM_ERROR',
    CREATE_LIKE = 'tweets/CREATE_LIKE',
-   DELETE_LIKE = 'tweets/DELETE_LIKE'
+   DELETE_LIKE = 'tweets/DELETE_LIKE',
+   FETCH_LIKE = 'tweets/FETCH_LIKE',
 }
 
 export interface IState {
    items: ITweet[],
    isLoading: boolean,
    formError: string | null,
-   error: string | null
+   error: string | null,
+   isFetchingLike: boolean,
 }
 
 export interface setItems {
@@ -47,9 +49,26 @@ export interface setFormError {
    payload: string,
 }
 
+export interface createLike {
+   type: Actions.CREATE_LIKE,
+   payload: { tweet: string, user: string },
+}
+
+export interface deleteLike {
+   type: Actions.DELETE_LIKE,
+   payload: { tweet: string, user: string },
+}
+
+export interface fetchLike {
+   type: Actions.FETCH_LIKE,
+}
+
 export type ActionTypes = setItems
    | setIsLoading
    | setError
    | addItem
    | deleteItem
-   | setFormError;
+   | setFormError
+   | createLike
+   | deleteLike
+   | fetchLike;

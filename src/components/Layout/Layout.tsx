@@ -1,5 +1,5 @@
-import React, { useEffect } from "react"
-import './Home.scss';
+import React from "react"
+import './Layout.scss';
 import {
    AiOutlineHome as HomeIcon,
    AiOutlineUnorderedList as ListI,
@@ -10,30 +10,14 @@ import { IoMdNotificationsOutline as NotifI } from 'react-icons/io';
 import { FaRegUser as ProfileI } from 'react-icons/fa';
 import { BsBookmark as BookmarkI, BsSearch as SearchI } from 'react-icons/bs';
 import { GiFeather as Feather } from 'react-icons/gi';
-import { NavLink } from "react-router-dom";
-import TrandsColumn from "../../components/HomePage/TrandsColumn/TrandsColumn";
-import UsersColumn from "../../components/HomePage/UsersColumn/UsersColumn";
-import Tweets from "../../components/Tweets/Tweets";
-import { Routes, Route, Navigate } from "react-router-dom";
-import CurrentTweet from "../../components/CurrentTweet/CurrentTweet";
-import UserPanel from "../../components/HomePage/UserPanel/UserPanel";
+import { Link, NavLink } from "react-router-dom";
+import TrandsColumn from "../HomePage/TrandsColumn/TrandsColumn";
+import UsersColumn from "../HomePage/UsersColumn/UsersColumn";
+import UserPanel from "../HomePage/UserPanel/UserPanel";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
-import { useNavigate } from "react-router-dom";
-import Profile from "../../components/Profile/Profile";
-import { IUser } from "../../types/IUser";
 
-interface IHomeProps {
-   isAuth: boolean,
-   isLoading: boolean,
-}
-
-const Home: React.FC<IHomeProps> = ({ isAuth, isLoading }) => {
-   const user = useTypedSelector(state => state.auth.user);
-   const navigate = useNavigate();
-
-   useEffect(() => {
-      if (!isAuth && !isLoading) navigate('/');
-   }, [isAuth])
+const Layout: React.FC = ({ children }) => {
+   const { user } = useTypedSelector(state => state.auth)
 
    return (
       <div className="home">
@@ -107,18 +91,18 @@ const Home: React.FC<IHomeProps> = ({ isAuth, isLoading }) => {
                      </li>
                   </div>
                   <li className="home-nav__panel">
-                     {user && <UserPanel user={user} />}
+                     {user
+                        ? <UserPanel user={user} />
+                        : <Link to='/' className="home-nav__sign-btn">
+                           <span>Войти</span>
+                        </Link>}
                   </li>
                </ul>
             </nav>
          </header>
          <main className="home__main">
             <div className="home__content h-content">
-               <Routes>
-                  <Route path='/home' element={<Tweets />} />
-                  <Route path='/:username/status/:id' element={<CurrentTweet />} />
-                  <Route path='/:username/*' element={<Profile />} />
-               </Routes>
+               {children}
             </div>
             <div className="home__aside home-aside">
                <div className="home-aside__search">
@@ -144,4 +128,4 @@ const Home: React.FC<IHomeProps> = ({ isAuth, isLoading }) => {
    )
 }
 
-export default Home;
+export default Layout;

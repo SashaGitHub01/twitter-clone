@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
-import SignUp from './pages/SignUp/SignUp';
-import { Routes, Route, Navigate } from 'react-router';
+import SignUp from './pages2/SignUp';
+import { Routes, Route } from 'react-router';
 import { useTypedSelector } from './hooks/useTypedSelector';
 import { useDispatch } from 'react-redux';
 import { authMe } from './store/actions/authActions';
-import Home from './pages/Home/Home';
 import { TwitterIcon } from './assets/icons';
+import Tweets from './pages2/Tweets';
+import CurrentTweet from './pages2/CurrentTweet';
+import Profile from './pages2/Profile';
 
 function App() {
    const dispatch = useDispatch();
@@ -23,17 +25,15 @@ function App() {
                   <TwitterIcon className='load-icon' />
                </div>
                : <Routes>
-                  <Route path='/*' element={<Home
+                  <Route path='/' element={<SignUp
+                     signInError={signInError}
+                     signUpError={signUpError}
                      isAuth={isAuth}
                      isLoading={isLoading}
                   />} />
-                  <Route path='/' element={<SignUp
-                     isAuth={isAuth}
-                     isLoading={isLoading}
-                     signInError={signInError}
-                     signUpError={signUpError}
-                  />}
-                  />
+                  <Route path='/home' element={<Tweets />} />
+                  <Route path='/:username/status/:id' element={<CurrentTweet />} />
+                  <Route path='/:username/*' element={<Profile />} />
                </Routes>
          }
       </div>

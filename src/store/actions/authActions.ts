@@ -86,23 +86,6 @@ export const signIn = (data: ISignIn) => {
    }
 }
 
-export const signInWithGoogle = () => {
-   return async (dispatch: Dispatch<ActionTypes>) => {
-      try {
-         const res = await AuthService.withGoogle();
-
-         if (!res) {
-            return dispatch(setSignInError('error'));
-         }
-
-         return dispatch(setUser(res));
-
-      } catch (err) {
-         dispatch(setSignInError(err));
-      }
-   }
-}
-
 export const signUp = (data: ISignUp) => {
    return async (dispatch: Dispatch<ActionTypes>) => {
       try {

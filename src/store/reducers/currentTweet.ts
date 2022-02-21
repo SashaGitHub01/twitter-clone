@@ -3,10 +3,11 @@ import { ActionTypes, Actions, IState } from "../../types/currentTweet";
 const initialState: IState = {
    tweet: null,
    isLoading: false,
-   error: ''
+   error: '',
+   isFetchingLike: false,
 }
 
-const currentTweetReducer = (state = initialState, action: ActionTypes) => {
+const currentTweetReducer = (state = initialState, action: ActionTypes): IState => {
    switch (action.type) {
       case Actions.SET_TWEET:
          return {
@@ -53,11 +54,18 @@ const currentTweetReducer = (state = initialState, action: ActionTypes) => {
             }
          }
 
+      case Actions.FETCH_LIKE:
+         return {
+            ...state,
+            isFetchingLike: true
+         }
+
       case Actions.CREATE_LIKE:
          if (!state.tweet) return state
 
          return {
             ...state,
+            isFetchingLike: false,
             tweet: {
                ...state.tweet,
                likes: [...state.tweet.likes, action.payload]
@@ -69,6 +77,7 @@ const currentTweetReducer = (state = initialState, action: ActionTypes) => {
 
          return {
             ...state,
+            isFetchingLike: false,
             tweet: {
                ...state.tweet,
                likes: state.tweet.likes.filter((like) => {

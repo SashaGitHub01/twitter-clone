@@ -9,13 +9,15 @@ export enum Actions {
    CREATE_COMMENT = 'currentTweet/CREATE_COMMENT',
    CREATE_LIKE = 'currentTweet/CREATE_LIKE',
    DELETE_LIKE = 'currentTweet/DELETE_LIKE',
+   FETCH_LIKE = 'currentTweet/FETCH_LIKE'
 }
 
 
 export interface IState {
    tweet: ITweet | null,
    error: string,
-   isLoading: boolean
+   isLoading: boolean,
+   isFetchingLike: boolean
 }
 
 export interface setTweet {
@@ -52,10 +54,15 @@ export interface setIsLoading {
    type: Actions.SET_IS_LOADING,
 }
 
+export interface fetchLike {
+   type: Actions.FETCH_LIKE,
+}
+
 export type ActionTypes = setTweet
    | setError
    | setIsLoading
    | deleteComment
    | createComment
    | deleteLike
-   | createLike;
+   | createLike
+   | fetchLike;
