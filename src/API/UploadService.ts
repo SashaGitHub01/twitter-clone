@@ -1,4 +1,4 @@
-import axios from "axios";
+import { instance } from "./instance";
 import { IImage } from "../types/IImage";
 import { IUser } from "../types/IUser";
 import { IResponse } from "./types/response";
@@ -11,7 +11,7 @@ class UploadService {
          formData.append('images', file);
       })
 
-      const res = await axios.post<IResponse<string[]>>('/upload', formData, {
+      const res = await instance.post<IResponse<string[]>>('/upload', formData, {
          headers: {
             "Content-Type": 'multipart/form-data'
          }
@@ -24,7 +24,7 @@ class UploadService {
       const formData = new FormData();
       formData.append('avatar', file)
 
-      const res = await axios.post<IResponse<string>>('/upload/avatar', formData, {
+      const res = await instance.post<IResponse<string>>('/upload/avatar', formData, {
          headers: {
             "Content-Type": 'multipart/form-data'
          }
