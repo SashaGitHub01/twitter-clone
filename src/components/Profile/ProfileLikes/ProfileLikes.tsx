@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Tweet from "../../Tweets/Tweet/Tweet";
-import './ProfileLikes.scss';
+import '../../../css/components/Profile/ProfileLikes/ProfileLikes.css';
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { useDispatch } from "react-redux";
 import { getLikes } from "../../../store/actions/currentProfile";

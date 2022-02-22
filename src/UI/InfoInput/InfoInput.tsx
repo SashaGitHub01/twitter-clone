@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { AlertIcon } from "../../assets/icons";
-import './InfoInput.scss';
+import '../../css/UI/InfoInput/InfoInput.css';
 
 interface IInfoInput {
    className?: string | null,

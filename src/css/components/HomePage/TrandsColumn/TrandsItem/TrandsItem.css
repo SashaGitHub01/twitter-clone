@@ -1,0 +1,33 @@
+.home-column__item {
+  position: relative;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 1.2rem 1.5rem; }
+  .home-column__item:hover {
+    background-color: rgba(0, 0, 0, 0.03); }
+
+.home-column__title {
+  font-weight: 500;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  overflow: hidden; }
+  .home-column__title.user-name {
+    flex: 1 1 auto;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; }
+    .home-column__title.user-name span {
+      display: block;
+      overflow: hidden;
+      font-size: 1.6rem;
+      text-overflow: ellipsis;
+      white-space: nowrap; }
+      .home-column__title.user-name span:hover {
+        text-decoration: underline; }
+
+.home-column__count {
+  color: #536471;
+  font-size: 1.3rem; }

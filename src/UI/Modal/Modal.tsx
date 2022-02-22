@@ -1,6 +1,6 @@
 import React from "react"
 import { GrTwitter as Twitter, GrFormClose as Close } from 'react-icons/gr';
-import './Modal.scss';
+import '../../css/UI/Modal/Modal.css';
 
 interface IModal {
    title: string,

@@ -1,0 +1,16 @@
+.new-tweet-form__textarea {
+  padding: 0px 1rem 0 0px;
+  font-family: inherit;
+  font-weight: 500;
+  min-height: 8rem;
+  line-height: 2.4rem;
+  resize: none;
+  width: 100%;
+  font-size: 2rem;
+  border-bottom: 2px solid rgba(190, 190, 190, 0.15);
+  margin-bottom: 1.2rem; }
+  .new-tweet-form__textarea::-webkit-scrollbar {
+    width: 8px; }
+  .new-tweet-form__textarea::-webkit-scrollbar-thumb {
+    background-color: rgba(15, 20, 25, 0.1);
+    border-radius: 50px; }

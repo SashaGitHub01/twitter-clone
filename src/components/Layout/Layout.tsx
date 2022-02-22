@@ -1,5 +1,5 @@
 import React from "react"
-import './Layout.scss';
+import '../../css/components/Layout/Layout.css'
 import {
    AiOutlineHome as HomeIcon,
    AiOutlineUnorderedList as ListI,

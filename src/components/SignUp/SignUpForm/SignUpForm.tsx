@@ -6,6 +6,7 @@ import { useFormik } from 'formik'
 import { useDispatch } from 'react-redux'
 import { signUp } from '../../../store/actions/authActions'
 import { AlertIcon } from '../../../assets/icons'
+import '../../../css/components/SignUp/SignUpForm/SignUpForm.css'
 import { useTypedSelector } from '../../../hooks/useTypedSelector'
 
 interface SignUpFormProps {

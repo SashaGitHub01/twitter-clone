@@ -1,5 +1,5 @@
 import React from "react";
-import './CommentsForm.scss';
+import '../../../css/components/CurrentTweet/CommentsForm/CommentsForm.css'
 import { SmileIcon, ImageIcon } from "../../../assets/icons";
 import { IUser } from "../../../types/IUser";
 import { useFormik } from "formik";

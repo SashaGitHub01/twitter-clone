@@ -1,0 +1,59 @@
+.profile-edit__col {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.profile-edit__avatar {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden; }
+  .profile-edit__avatar:hover .avatar-layout {
+    opacity: 1; }
+  .profile-edit__avatar .avatar-layout {
+    opacity: 0.25;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 0.5rem 0;
+    cursor: pointer; }
+    .profile-edit__avatar .avatar-layout span {
+      font-size: 1.3rem;
+      line-height: 1.8rem;
+      color: #0f1419;
+      font-weight: 500; }
+    .profile-edit__avatar .avatar-layout .profile-cam-icon {
+      font-size: 2.2rem;
+      color: #536471; }
+  .profile-edit__avatar .edit-img {
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+    height: 100%;
+    background-repeat: no-repeat;
+    width: 100%;
+    display: block;
+    border-radius: 50%; }
+
+.profile-edit__submit {
+  padding: 2rem 0 0 0; }
+  .profile-edit__submit .submit-btn {
+    min-height: 32px;
+    border-radius: 5000px;
+    background-color: #1d9bf0;
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: bold;
+    padding: 0 1.6rem; }
+    .profile-edit__submit .submit-btn:disabled {
+      background-color: rgba(126, 199, 248, 0.5);
+      pointer-events: none; }
+    .profile-edit__submit .submit-btn:hover {
+      background-color: #1784cc; }

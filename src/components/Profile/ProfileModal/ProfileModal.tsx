@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { IUser } from "../../../types/IUser";
 import Modal from "../../../UI/Modal/Modal";
-import './ProfileModal.scss';
+import '../../../css/components/Profile/ProfileModal/ProfileModal.css';
 import { CameraIcon } from "../../../assets/icons";
 import { useFormik } from "formik";
 import * as Yup from 'yup';

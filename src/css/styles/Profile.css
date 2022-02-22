@@ -1,0 +1,157 @@
+.profile__col {
+  display: flex;
+  flex-direction: column; }
+
+.profile .pr-head {
+  max-width: 100%;
+  position: relative; }
+  .profile .pr-head::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(15, 20, 25, 0.1); }
+  .profile .pr-head__background {
+    height: 22rem;
+    background-color: #e2e2e2;
+    position: relative; }
+  .profile .pr-head__avatar {
+    width: 14rem;
+    height: 14rem;
+    border-radius: 50%;
+    transform: translateY(50%);
+    border: 4px solid white;
+    position: absolute;
+    bottom: 0;
+    margin-left: 1.5rem; }
+    .profile .pr-head__avatar img {
+      max-width: 100%;
+      border-radius: 50%;
+      display: block; }
+  .profile .pr-head__row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0rem 1.5rem 0rem 1.5rem;
+    position: relative;
+    width: 100%;
+    position: relative;
+    justify-content: flex-end; }
+  .profile .pr-head__button {
+    padding-top: 1.5rem; }
+    .profile .pr-head__button .edit-btn {
+      cursor: pointer;
+      border-radius: 222px;
+      padding: 0 1.6rem;
+      min-height: 32px;
+      color: #fff;
+      background-color: #1d9bf0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.6rem; }
+      .profile .pr-head__button .edit-btn:hover {
+        background-color: #1784cc; }
+    .profile .pr-head__button .follow-btn {
+      cursor: pointer;
+      border-radius: 222px;
+      padding: 0 1.6rem;
+      min-height: 32px;
+      color: #fff;
+      background-color: #0f1419;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.6rem; }
+      .profile .pr-head__button .follow-btn.active {
+        background-color: #fff;
+        color: #0f1419;
+        border: 1px solid black; }
+        .profile .pr-head__button .follow-btn.active:hover {
+          background-color: rgba(255, 83, 83, 0.2);
+          color: red; }
+      .profile .pr-head__button .follow-btn:disabled {
+        pointer-events: none;
+        opacity: 0.1; }
+      .profile .pr-head__button .follow-btn:hover {
+        background-color: rgba(15, 20, 25, 0.76); }
+  .profile .pr-head__info {
+    display: flex;
+    flex-direction: column;
+    padding: 3.25rem 1.5rem 2rem 1.5rem; }
+  .profile .pr-head__name {
+    font-weight: bold;
+    font-size: 2.2rem;
+    line-height: 2.8rem; }
+  .profile .pr-head__login {
+    font-weight: 300;
+    color: #536471;
+    font-size: 1.4rem;
+    line-height: 2rem; }
+  .profile .pr-head__about {
+    padding: 0.75rem 0; }
+    .profile .pr-head__about span {
+      font-size: 1.6rem;
+      color: #0f1419;
+      letter-spacing: 0.0025em;
+      line-height: 2.2rem;
+      font-weight: 300; }
+  .profile .pr-head__followers-row {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    font-weight: 300;
+    color: #536471;
+    font-size: 1.6rem;
+    line-height: 2.1rem; }
+  .profile .pr-head__followers-item b {
+    color: #0f1419; }
+  .profile .pr-head .pr-info-list {
+    display: flex;
+    align-items: center;
+    padding: 0.6rem 0px 1.1rem 0px;
+    font-weight: 300;
+    color: #536471;
+    font-size: 1.5rem;
+    gap: 1.45rem; }
+    .profile .pr-head .pr-info-list__item {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem; }
+      .profile .pr-head .pr-info-list__item .pr-info-icon {
+        color: #536471;
+        font-size: 1.7rem; }
+      .profile .pr-head .pr-info-list__item .link-icon {
+        font-size: 1.9rem; }
+  .profile .pr-head .pr-head-tab__list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+  .profile .pr-head .pr-head-tab__item {
+    cursor: pointer;
+    flex: 0 0 25%;
+    text-align: center; }
+    .profile .pr-head .pr-head-tab__item:hover {
+      background-color: rgba(15, 20, 25, 0.1); }
+    .profile .pr-head .pr-head-tab__item span {
+      display: inline-block;
+      font-size: 1.6rem;
+      color: #536471;
+      font-weight: bold;
+      padding: 2rem 0.5rem;
+      position: relative; }
+    .profile .pr-head .pr-head-tab__item .underline {
+      height: 4px;
+      width: 100%;
+      background-color: transparent;
+      position: absolute;
+      border-radius: 1000px;
+      bottom: 0;
+      left: 0; }
+    .profile .pr-head .pr-head-tab__item.active span {
+      color: #0f1419; }
+    .profile .pr-head .pr-head-tab__item.active .underline {
+      background-color: #1d9bf0; }

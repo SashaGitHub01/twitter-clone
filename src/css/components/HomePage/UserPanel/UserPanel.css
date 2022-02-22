@@ -1,0 +1,63 @@
+.user-panel {
+  border-radius: 100px;
+  box-shadow: 0px 0 12px 2px rgba(0, 0, 0, 0.1);
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  max-width: 210px;
+  position: relative; }
+  .user-panel:hover {
+    background-color: rgba(0, 0, 0, 0.03); }
+  .user-panel__row {
+    display: flex;
+    align-items: center;
+    gap: 1rem; }
+  .user-panel__avatar {
+    flex: 0 0 48px; }
+    .user-panel__avatar img {
+      max-width: 100%;
+      display: block;
+      border-radius: 50%; }
+  .user-panel__content {
+    display: flex;
+    flex: 1 1 auto;
+    overflow: hidden; }
+  .user-panel__body {
+    flex: 1 1 auto;
+    overflow: hidden; }
+  .user-panel__name {
+    font-weight: bold;
+    color: #0f1419;
+    font-size: 1.6rem;
+    line-height: 2rem;
+    white-space: nowrap;
+    text-overflow: ellipsis; }
+  .user-panel__login {
+    font-weight: 300;
+    font-size: 1.3rem;
+    color: #536471;
+    white-space: nowrap;
+    text-overflow: ellipsis; }
+  .user-panel__dots {
+    display: flex;
+    align-items: center; }
+    .user-panel__dots .dots_circle {
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative; }
+    .user-panel__dots .user-panel-icon {
+      font-size: 1.8rem;
+      color: #536471; }
+
+@media (max-width: 1240px) {
+  .user-panel {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 0; }
+    .user-panel__content {
+      display: none; } }

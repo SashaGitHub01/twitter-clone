@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { DotsIcon, ReplyIcon } from "../../../../assets/icons";
 import { IComment } from "../../../../types/IComment";
-import './Comment.scss';
+import '../../../../css/components/CurrentTweet/CommentsList/Comment/Comment.css'
 import Linkify from "react-linkify";
 import { createDateString } from "../../../../utils/createDateString";
 import CommentPopup from "../../CommentPopup/CommentPopup";

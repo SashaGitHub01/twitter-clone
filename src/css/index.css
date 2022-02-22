@@ -1,0 +1,119 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Source+Sans+Pro:wght@300;400&family=Ubuntu:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Libre+Franklin:wght@300;400;500;700&family=Poppins:wght@400;500;700&family=Roboto+Mono&family=Source+Sans+Pro:wght@300;400&family=Ubuntu:wght@400;500;700&display=swap");
+/*Обнуление*/
+* {
+  padding: 0;
+  margin: 0;
+  border: 0; }
+
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+:focus,
+:active {
+  outline: none; }
+
+a:focus,
+a:active {
+  outline: none; }
+
+nav,
+footer,
+header,
+aside {
+  display: block; }
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%; }
+
+input,
+button,
+textarea {
+  font-family: inherit; }
+
+textarea::-webkit-scrollbar {
+  width: 8px; }
+
+textarea::-webkit-scrollbar-thumb {
+  background-color: rgba(15, 20, 25, 0.1);
+  border-radius: 50px; }
+
+input::-ms-clear {
+  display: none; }
+
+button {
+  cursor: pointer; }
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0; }
+
+a,
+a:visited {
+  text-decoration: none; }
+
+a:hover {
+  text-decoration: none; }
+
+ul li {
+  list-style: none; }
+
+img {
+  vertical-align: top;
+  color: #1882c9; }
+
+html {
+  font-size: 62.5%; }
+
+body {
+  font-family: "Inter", "Poppins", "Roboto", sans-serif; }
+
+#root {
+  min-height: 100%;
+  position: relative; }
+
+.wrapper {
+  min-height: 100vh;
+  max-width: 100%;
+  position: relative; }
+
+pre {
+  color: #0f1419;
+  font-family: inherit;
+  font-size: 1.6rem;
+  line-height: 1.9rem;
+  white-space: pre-wrap; }
+  pre a {
+    color: #1d9bf0;
+    font-weight: 300; }
+
+.overlay-load {
+  min-height: 100vh;
+  background: rgba(169, 231, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative; }
+  .overlay-load .load-icon {
+    font-size: 7rem;
+    animation: loader 2s infinite ease; }
+
+@keyframes loader {
+  0% {
+    color: rgba(126, 199, 248, 0.5);
+    transform: scale(100%); }
+  100% {
+    color: #1d9bf0;
+    transform: scale(130%); } }

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import '../styles/CurrentTweet.scss';
+import '../css/styles/CurrentTweet.css'
 import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { useParams } from "react-router-dom";

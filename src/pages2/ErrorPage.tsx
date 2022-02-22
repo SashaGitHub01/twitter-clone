@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../components/Layout/Layout";
-import '../styles/ErrorPage.scss';
+import '../css/styles/ErrorPage.css'
 
 const ErrorPage = () => {
    return (

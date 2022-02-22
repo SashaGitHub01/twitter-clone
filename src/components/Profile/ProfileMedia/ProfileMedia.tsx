@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Tweet from "../../Tweets/Tweet/Tweet";
-import './ProfileMedia.scss';
+import '../../../css/components/Profile/ProfileMedia/ProfileMedia.css';
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { useDispatch } from "react-redux";
 import { getMedia } from "../../../store/actions/currentProfile";

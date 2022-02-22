@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import '../styles/Tweets.scss'
+import '../css/styles/Tweets.css'
 import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { getTweets } from "../store/actions/tweetsActions";

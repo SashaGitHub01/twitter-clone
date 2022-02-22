@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import image from '../assets/signup.png';
-import '../styles/SignUp.scss';
+import '../css/styles/SignUp.css'
 import { GrTwitter as Twitter } from 'react-icons/gr';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";

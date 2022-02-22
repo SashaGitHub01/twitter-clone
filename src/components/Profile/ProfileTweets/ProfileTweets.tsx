@@ -1,7 +1,7 @@
 import React from "react";
 import { ITweet } from "../../../types/ITweet";
 import Tweet from "../../Tweets/Tweet/Tweet";
-import './ProfileTweets.scss';
+import '../../../css/components/Profile/ProfileTweets/ProfileTweets.css';
 
 interface IProfileTweetsProps {
    items?: ITweet[],

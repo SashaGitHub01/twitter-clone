@@ -1,5 +1,5 @@
 import React from "react";
-import './ContentTitle.scss';
+import '../../css/components/ContentTitle/ContentTitle.css';
 
 const ContentTitle: React.FC = ({ children }) => {
    return (

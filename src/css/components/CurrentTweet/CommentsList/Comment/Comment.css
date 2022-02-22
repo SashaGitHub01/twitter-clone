@@ -1,0 +1,55 @@
+.comment-item {
+  padding: 1.5rem 1.5rem;
+  border-bottom: 1px solid rgba(15, 20, 25, 0.1);
+  position: relative; }
+  .comment-item__row {
+    display: flex;
+    gap: 1rem;
+    max-width: 100%; }
+  .comment-item__avatar {
+    flex: 0 0 50px; }
+    .comment-item__avatar img {
+      max-width: 100%;
+      border-radius: 50%;
+      display: block; }
+  .comment-item__content {
+    flex: 1 1 auto;
+    color: #0f1419; }
+  .comment-item__user {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.6rem; }
+  .comment-item__name {
+    font-weight: bold; }
+  .comment-item__login {
+    font-weight: 300;
+    color: #536471;
+    line-height: 2rem; }
+  .comment-item__body {
+    padding: 1rem 0; }
+  .comment-item__dots {
+    position: relative; }
+    .comment-item__dots .comm-dots-btn {
+      height: 2.5rem;
+      width: 2.5rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer; }
+      .comment-item__dots .comm-dots-btn:hover {
+        background-color: rgba(15, 20, 25, 0.1); }
+      .comment-item__dots .comm-dots-btn .comment-dots-icon {
+        font-size: 1.8rem;
+        color: #536471; }
+  .comment-item__time div {
+    color: #536471;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; }
+    .comment-item__time div .comm-reply-icon {
+      font-size: 1.8rem; }
+    .comment-item__time div span {
+      font-size: 1.4rem;
+      font-weight: 300; }

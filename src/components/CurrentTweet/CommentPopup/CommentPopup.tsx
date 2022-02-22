@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import './CommentPopup.scss';
+import '../../../css/components/Tweets/TweetPopup/TweetPopup.css'
 import { IoTrashOutline as Trash } from 'react-icons/io5';
 import { MdOutlineEdit as Edit } from 'react-icons/md';
 import { fetchDeleteComment } from "../../../store/actions/currentTweet";

@@ -1,6 +1,7 @@
 import React from 'react'
 import { AlertIcon } from '../../../assets/icons'
 import InfoInput from '../../../UI/InfoInput/InfoInput'
+import '../../../css/components/SignUp/SignInForm/SignInForm.css'
 import Modal from '../../../UI/Modal/Modal'
 import { useFormik } from 'formik'
 import { useDispatch } from 'react-redux'

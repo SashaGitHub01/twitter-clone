@@ -1,7 +1,6 @@
 import React from "react";
 import { IComment } from "../../../types/IComment";
 import Comment from "./Comment/Comment";
-import './CommentsList.scss';
 
 interface ICommentsListProps {
    comments: IComment[],

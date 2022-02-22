@@ -1,5 +1,5 @@
 import React from "react";
-import './TrandsItem.scss';
+import '../../../../css/components/HomePage/TrandsColumn/TrandsItem/TrandsItem.css';
 import { ITrand } from "../../../../types/trands";
 
 interface ITrandsItemProps {

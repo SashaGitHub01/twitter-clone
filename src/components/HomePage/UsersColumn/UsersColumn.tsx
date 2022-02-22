@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import './UsersColumn.scss';
+import '../../../css/components/HomePage/UsersColumn/UsersColumn.css';
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { useDispatch } from "react-redux";
 import Loader from "../../Loader/Loader";

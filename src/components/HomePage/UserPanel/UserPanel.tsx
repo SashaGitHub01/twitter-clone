@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { DotsIcon } from "../../../assets/icons";
 import { useDispatch } from "react-redux";
-import './UserPanel.scss';
+import '../../../css/components/HomePage/UserPanel/UserPanel.css';
 import { IUser } from "../../../types/IUser";
 import UserPopup from "../UserPopup/UserPopup";
 

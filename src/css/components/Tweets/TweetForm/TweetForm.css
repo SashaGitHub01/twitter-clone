@@ -1,0 +1,62 @@
+.create-form {
+  display: flex;
+  padding: 1.2rem 1.5rem;
+  border-bottom: 1px solid rgba(15, 20, 25, 0.1); }
+  .create-form__avatar {
+    flex: 0 0 48px; }
+    .create-form__avatar img {
+      max-width: 100%;
+      display: block;
+      border-radius: 50%; }
+  .create-form__body {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; }
+
+.new-tweet-form {
+  padding-left: 1rem; }
+  .new-tweet-form__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.7rem; }
+  .new-tweet-form__btns {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem; }
+    .new-tweet-form__btns .new-tweet-icon {
+      font-size: 2.1rem;
+      color: #1d9bf0;
+      cursor: pointer; }
+  .new-tweet-form__control {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem; }
+    .new-tweet-form__control .form-error {
+      display: flex;
+      align-items: center;
+      font-size: 1.2rem;
+      color: #ec4848; }
+      .new-tweet-form__control .form-error .error-icon {
+        font-size: 1.7rem;
+        margin-right: 0.4rem; }
+  .new-tweet-form__submit {
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.6rem;
+    background-color: #1d9bf0;
+    border-radius: 30px;
+    padding: 0 1.6rem;
+    min-height: 38px;
+    cursor: pointer; }
+    .new-tweet-form__submit:hover {
+      background-color: #1784cc; }
+    .new-tweet-form__submit:disabled {
+      background-color: rgba(126, 199, 248, 0.5);
+      pointer-events: none; }
+  .new-tweet-form__circle {
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    border: 1px solid black; }

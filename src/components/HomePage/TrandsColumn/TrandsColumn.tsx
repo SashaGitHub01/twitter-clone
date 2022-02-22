@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { getTrands } from "../../../store/actions/trandsActions";
 import Loader from "../../Loader/Loader";
-import './TrandsColumn.scss';
+import '../../../css/components/HomePage/TrandsColumn/TrandsColumn.css';
 import TrandsItem from "./TrandsItem/TrandsItem";
 
 

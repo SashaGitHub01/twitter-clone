@@ -1,7 +1,7 @@
 import React from "react";
 import { LogoutIcon, ProfileIcon } from "../../../assets/icons";
 import { useDispatch } from "react-redux";
-import './UserPopup.scss';
+import '../../../css/components/HomePage/UserPopup/UserPopup.css';
 import { logout } from "../../../store/actions/authActions";
 import { useNavigate } from "react-router-dom";
 

@@ -1,0 +1,59 @@
+.reply-form {
+  padding: 1.4rem 2rem;
+  position: relative; }
+  .reply-form::after {
+    content: "";
+    background-color: rgba(15, 20, 25, 0.1);
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    left: 0;
+    bottom: 0; }
+  .reply-form__row {
+    display: flex;
+    gap: 1.2rem; }
+  .reply-form__avatar {
+    flex: 0 0 48px;
+    border-radius: 50%; }
+    .reply-form__avatar img {
+      max-width: 100%;
+      display: block;
+      border-radius: 50%; }
+  .reply-form__body {
+    flex: 1 1 auto; }
+  .reply-form__textarea {
+    padding-bottom: 1rem; }
+    .reply-form__textarea .reply-textarea {
+      width: 100%;
+      font-size: 1.8rem;
+      resize: none;
+      min-height: 6rem;
+      line-height: 2.2rem; }
+      .reply-form__textarea .reply-textarea::placeholder {
+        color: #536471; }
+  .reply-form__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+  .reply-form__icons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer; }
+    .reply-form__icons .reply-form-i {
+      color: #1d9bf0;
+      font-size: 2rem; }
+  .reply-form__submit {
+    color: #fff;
+    font-size: 1.6rem;
+    text-align: center;
+    font-weight: bold;
+    min-height: 38px;
+    cursor: pointer;
+    padding: 0 1.5rem;
+    border-radius: 1111px;
+    background-color: #1d9bf0; }
+    .reply-form__submit:hover {
+      background-color: #1784cc; }
+    .reply-form__submit:disabled {
+      background-color: rgba(126, 199, 248, 0.5); }

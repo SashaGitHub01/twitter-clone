@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ContentTitle from "../components/ContentTitle/ContentTitle";
-import '../styles/Profile.scss';
+import '../css/styles/Profile.css'
 import { CalendarIcon, LinkIcon, LocationIcon } from "../assets/icons";
 import { formatJoinDate } from "../utils/formatJoinDate";
 import { useTypedSelector } from "../hooks/useTypedSelector";
