@@ -3,6 +3,7 @@
    "version": "0.1.0",
    "private": true,
    "type": "module",
+   "proxy": "https://nameless-sea-40141.herokuapp.com/api",
    "dependencies": {
       "@babel/eslint-parser": "^7.17.0",
       "@rollup/plugin-babel": "^5.3.0",
@@ -43,7 +44,6 @@
       "web-vitals": "^1.0.1",
       "yup": "^0.32.11"
    },
-   "proxy": "https://nameless-sea-40141.herokuapp.com/api",
    "scripts": {
       "start": "react-scripts start",
       "build": "react-scripts build",
